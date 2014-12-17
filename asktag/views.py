@@ -5,6 +5,17 @@ from django.core.context_processors import csrf
 #from django.contrib.auth.forms import UserCreationForm
 from forms import MyRegistrationForm
 from django.contrib.auth import authenticate
+from django.db.models import Count
+from article.models import Article
+
+
+#helper functions
+
+def getTopPosts(num):
+	posts = Article.objects.annotate(num_likes=Count('likes'))
+	posts = posts[:num]
+	return posts
+
 
 #User registration views
 
@@ -32,9 +43,10 @@ def register_success(request):
 #User login views
 
 def login(request):
-	c = {}
-	c.update(csrf(request))
-	return render(request, 'login.html', c)
+	args = {}
+	args.update(csrf(request))
+	args['topPosts']= getTopPosts(5)
+	return render(request, 'login.html', args)
 	
 def auth_view(request):
 	username = request.POST.get('username', '')
@@ -48,11 +60,18 @@ def auth_view(request):
 		return HttpResponseRedirect('/accounts/invalid')
 
 def loggedin(request):
-	return render(request, 'loggedin.html', {'full_name':request.user.username})
+	args = {}
+	args['topPosts']= getTopPosts(5)
+	args['full_name']=request.user.username
+	return render(request, 'loggedin.html', args)
 	
 def invalid_login(request):
-	return render(request, 'invalid_login.html', {})
+	args = {}
+	args['topPosts']= getTopPosts(5)
+	return render(request, 'invalid_login.html', args)
 	
 def logout(request):
+	args = {}
 	auth.logout(request)
-	return render(request, 'logout.html', {})
+	args['topPosts']= getTopPosts(5)
+	return render(request, 'logout.html', args)

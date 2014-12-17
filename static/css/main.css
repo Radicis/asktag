@@ -329,14 +329,14 @@ header nav ul li a:hover{
 	
 }
 
-.posts li{
+.posts > li{
 	padding:2px;	
 	margin-bottom:10px;
 	overflow:auto;
 	position:relative;
 }
 
-.posts li:before{
+.posts > li:before{
 width: 0;
 height: 0;
 border-style: solid;
@@ -349,7 +349,7 @@ z-index:999;
 content:" ";
 }
 
-.posts li:after{
+.posts > li:after{
 width: 0;
 height: 0;
 border-style: solid;
@@ -454,6 +454,19 @@ content:" ";
 	color:#999;
 }
 
+.liked-by{
+	font-size:.7em;
+}
+
+
+#liked-by{
+	list-style:none;
+}
+#liked-by li{
+	float:left;
+	margin-right:5px;
+}
+
 #comment, #comment-comment{
 	padding:10px;
 	cursor:pointer;
@@ -471,16 +484,6 @@ content:" ";
 
 .post-user{
 	font-size:.8em;
-}
-
-.posts .post{
-	
-}
-.posts .question{	
-	
-}
-.posts .link{
-	
 }
 
 .posts .post-tags{

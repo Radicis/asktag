@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div id="page_container" class="container">
-<div class="pagination">
+
 	<ul class="posts content">
 	{% if articles.count > 0 %}
 		{% for article in articles %}
@@ -20,9 +20,12 @@
 				</div>
 				<div class="post-info clear-fix">					
 					<span class="liked-by">Liked by: 
-					<ul>
+					<ul id="liked-by">
 					{% for like in article.liked_by %}
-						<a href="">{{ like.title }}</a>
+						{% if like == "" %}
+						{% else %}
+							<li>{{ like.title }}</li>
+						{% endif %}
 					{% endfor %}
 					</ul>
 					</span>
@@ -33,7 +36,7 @@
 			</li>
 		{% endfor %}
 	</ul>
-</div>
+
 	{% else %}
 		<p>None to show</p>
 	{% endif %}

@@ -28,15 +28,18 @@ urlpatterns = patterns('',
 	
 	
 	#user login
-	url(r'^accounts/login/$', 'django_test.views.login'),
-	url(r'^accounts/auth/$', 'django_test.views.auth_view'),
-	url(r'^accounts/logout/$', 'django_test.views.logout'),
-	url(r'^accounts/loggedin/$', 'django_test.views.loggedin'),
-	url(r'^accounts/invalid/$', 'django_test.views.invalid_login'),
+	url(r'^accounts/login/$', 'asktag.views.login'),
+	url(r'^accounts/auth/$', 'asktag.views.auth_view'),
+	url(r'^accounts/logout/$', 'asktag.views.logout'),
+	url(r'^accounts/loggedin/$', 'asktag.views.loggedin'),
+	url(r'^accounts/invalid/$', 'asktag.views.invalid_login'),
+	
+	#user profile page
+	url(r'^accounts/profile/$', 'userprofile.views.user_profile'),
 	
 	#user registration
-	url(r'^accounts/register/$', 'django_test.views.register_user'),
-	url(r'^accounts/register_success/$', 'django_test.views.register_success'),
+	url(r'^accounts/register/$', 'asktag.views.register_user'),
+	url(r'^accounts/register_success/$', 'asktag.views.register_success'),
 	
 	#articles
 	#url(r'^articles/', include('article.urls')),

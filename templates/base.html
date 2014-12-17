@@ -58,7 +58,12 @@
 			<div class="right-content">
 				<div class="right-user">
 					<div class="user">						
-							user details
+							{% if user.username %}
+							{{ user.username }}
+							<a href="/accounts/logout">Logout</a>
+							{% else %}
+							<a href="/accounts/login">Login</a>
+							{% endif %}
 					</div>
 				</div>
 				<div class="right-make-post">

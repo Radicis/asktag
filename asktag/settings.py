@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'article',
+	'userprofile'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,6 +89,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
 
 import dj_database_url
 import os

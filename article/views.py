@@ -7,6 +7,7 @@ from django.views.generic.base import TemplateView
 from django.db.models import Count
 from django.utils import timezone
 import re
+from django.contrib.auth.decorators import login_required
 
 from article.models import Article, Comment
 
@@ -70,6 +71,8 @@ def article(request, article_id=1):
 
 
 #create article	
+#decorator - auto checks if user is logged in and if not it redirects to login page
+@login_required
 def create(request):
 	
 	if request.POST:		
@@ -84,20 +87,27 @@ def create(request):
 		
 	args = {}
 	args.update(csrf(request))
+	args['topPosts']= getTopPosts(5)
 	
 	args['form'] = form	
 	
 	return render(request, 'create_article.html', args)
-	
+
+@login_required	
 def like_article(request, article_id):
 	if article_id:
 		a = Article.objects.get(id=article_id)
-		#check user liked before
-		a.likes +=1
-		a.liked_by.append("adam")
-		a.save()
+		#check if user liked this before
+		if request.user.username in a.liked_by:
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+		else:
+			a.likes +=1
+			a.liked_by.append(request.user.username)
+			a.save()
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 	
+
+@login_required	
 def create_comment(request, article_id):
 	a = Article.objects.get(id=article_id)
 	
