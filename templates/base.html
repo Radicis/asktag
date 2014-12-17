@@ -14,7 +14,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-		<div class="container">
+		<div id="wrapper">
 		<header>
 			<h1 class="clear-fix logo">Ask<span>Tag</span></h1>
 			<div id="nav-toggle" class="hidden">
@@ -35,18 +35,17 @@
 				</ul>
 			</nav>
 		</header>
-		<div class="main-content"><!-- Begin content area --->
-			<div class="side-content">
-
-						<h3>Search</h3>
-							{% csrf_token %}
-	<form autocomplete="off">
-	<input type="text" id="search" name="search" />
-	</form>
-	<ul id="search-results">
-	
-	</ul>
-			<div class="top-posts clear-fix">
+		<div id="content-wrapper"><!-- Begin content area --->			
+			
+			<div id="side-content">
+				<h3>Search</h3>
+					{% csrf_token %}
+					<form autocomplete="off">
+						<input type="text" id="search" name="search" />
+					</form>
+				<ul id="search-results"></ul>
+				
+				<div id="side-top-posts" class="clear-fix">
 						<h3>Top Posts</h3>
 						<ul>
 							{% for article in topPosts %}
@@ -55,23 +54,20 @@
 						</ul>
 					</div>
 				</div>
-			<div class="right-content">
-				<div class="right-user">
-					<div class="user">						
-							{% if user.username %}
-							{{ user.username }}
-							<a href="/accounts/logout">Logout</a>
-							{% else %}
-							<a href="/accounts/login">Login</a>
-							{% endif %}
-					</div>
-				</div>
-				<div class="right-make-post">
-					<div id="makepost"><h2><a href="/create/">Make a Post!</a></h2></div>
-				</div><!-- End right post --->
-				<div class="right-body">
-					<p>
-						<h2>Rules</h2>
+				
+			<div id="right-content">
+			
+				{% if user.username %}
+				{{ user.username }}
+				<a href="/accounts/logout">Logout</a>
+				{% else %}
+				<a href="/accounts/login"><h2>Login</h2></a>
+				{% endif %}
+					
+				<h2><a href="/create/">Make a Post!</a></h2>
+				<div id="right-rules-container">
+					<h3>Rules</h3>
+					<div id="right-rules">
 						Here are some  helpful rules to make everyone's stay better:
 						<ul>
 							<li>Don't be douche</li>
@@ -79,25 +75,26 @@
 							<li>Don't harass users</li>
 							<li>Don't harass admins</li>
 							<li>Keep it classy</li>
-						</ul>
-					</p>
-				</div><!-- End right body --->
+						</ul>	
+					</div>
+				</div>					
 			</div><!-- End right content --->
 			
-			<div class="posts-container">
-				{% block content %}
+			<div id="main-content">
 				
+				{% block content %}{% endblock %}				
 				
-				{% endblock %}
-				
-				
-				
-			</div><!-- Posts area -->
-	</div><!-- End content area --> 
-	 <footer>
+			</div><!-- End block content area -->
+			
+	</div><!-- End main-content wrapper  --> 
+	
+	<footer>
         <p>&copy; Adam Lloyd 2014</p>
-      </footer>
-    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    </footer>
+	
+    </div> <!-- /container -->       
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 
         <script src="{% static "js/main.js" %}"></script>

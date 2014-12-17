@@ -1,47 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="page_container" class="container">
+<div id="post-container">
 
-	<ul class="posts content">
+	<ul class="post-list">
 	{% if articles.count > 0 %}
 		{% for article in articles %}
 			<li>				
-				<img class="user-image" src = "" />				
+				<img class="user-image" src = "" />	
+				<div class="post">
 
-				<div class="">
-				<h3><a href="/get/{{ article.id }}/">{{ article.title|truncatewords:"10" }}</a></h3>
+					<h3><a href="/get/{{ article.id }}/">{{ article.title|truncatewords:"10" }}</a></h3>
 
-				<div class="post-likes clear-fix">Likes: {{ article.likes }} | <a href="/like/{{ article.id }}">Like This Post</a></div>
-				<div class="post-tags clear-fix">
-				Tags:
-				{% for tag in article.tags %}
-					<a href="/viewtag/{{ tag }}">{{ tag }}</a>
-				{% endfor %}	
-				</div>
-				<div class="post-info clear-fix">					
-					<span class="liked-by"> 
-					<ul id="liked-by">
-					<li>Liked by: </li>
-					{% for like in article.liked_by %}
-						{% if like == "" %}
-						{% else %}
-							<li>{{ like.title }}</li>
-						{% endif %}
-					{% endfor %}
-					</ul>
-					</span><br>
-					<span class="post-user">Posted by: 
-					<span class="post-time">| Posted on: {{ article.pub_date }} </span>
-				</div>
+					<div class="post-info">
+						<div class="post-likes clear-fix">
+							Likes: {{ article.likes }} | <a href="/like/{{ article.id }}">Like This Post</a>
+						</div>
+						<ul id="liked-by">
+							<li>Liked by: </li>
+							{% for like in article.liked_by %}
+								{% if like == "" %}
+								{% else %}
+									<li>{{ like.title }}</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+						<br>
+						<div class="post-tags clear-fix">
+							Tags:
+							{% for tag in article.tags %}
+								<a href="/viewtag/{{ tag }}">{{ tag }}</a>
+							{% endfor %}	
+						</div>						
+						Posted by: {{ article.posted_by }}
+						| Posted on: {{ article.pub_date }} 					
 					</div>
+				</div>
 			</li>
 		{% endfor %}
 	</ul>
 
 	{% else %}
 		<p>None to show</p>
-	{% endif %}
-	
+	{% endif %}	
 	<div class="page_navigation"></div>	
 </div>
 

@@ -8,7 +8,7 @@ $.ajax({
 		//Iterate through the JSON objects contained in the array data.results
 		for(var i=0;i<data.results.length;i++){
 			//Target the i+n nthchild and put in img src
-			$(".posts li:nth-child(" + (i+1) + ") img").attr("src",data.results[i].user.picture.thumbnail);			
+			$(".post-list li:nth-child(" + (i+1) + ") img").attr("src",data.results[i].user.picture.thumbnail);			
 		}
 	  }
 });
@@ -29,13 +29,13 @@ $(document).ready(function(){
 	  $("#comment-nest-form").slideToggle();
 	}); 
 	
-	$('.posts-container').profanityFilter({
+	$('#posts-container').profanityFilter({
     replaceWith: ['fun', 'stuff'],
     customSwears: ['ass'],
     externalSwears: '/static/js/vendor/swearWords.json'
 	});
 	
-	$('.side-content').profanityFilter({
+	$('#side-content').profanityFilter({
     replaceWith: ['fun', 'stuff'],
     customSwears: ['ass'],
     externalSwears: '/static/js/vendor/swearWords.json'

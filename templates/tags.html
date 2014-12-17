@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
  
 {% block content %}
-<ul class="tags">
+<ul id="tags">
 {% for tag in tags %}
 				<li>
 					<a href="/viewtag/{{ tag }}">{{ tag }}</a>
