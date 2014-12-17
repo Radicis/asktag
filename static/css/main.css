@@ -484,6 +484,7 @@ content:" ";
 
 .post-user{
 	font-size:.8em;
+	clear:both;
 }
 
 .posts .post-tags{
