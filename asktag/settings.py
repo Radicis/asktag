@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 	'article',
-	'userprofile'
+	'userprofile',
+	'simple',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -51,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
 
 ROOT_URLCONF = 'asktag.urls'
 
@@ -90,9 +92,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
-
 import dj_database_url
 import os
 if os.getcwd() == "/app":
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+	
+FACEBOOK_APP_ID = '875663589150492'
+FACEBOOK_APP_SECRET = '5cc948776958a0d716bc9c25178c4e53'

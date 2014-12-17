@@ -7,6 +7,9 @@ from article.views import BasePostsView
 admin.autodiscover()
 
 urlpatterns = patterns('',
+	#testing
+	url(r'^simple/', include('simple.urls')),
+
 	#home
 	url(r'^$', BasePostsView.as_view(template_name='articles.html')),
 	

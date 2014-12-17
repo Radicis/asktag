@@ -7,3 +7,7 @@ class UserProfile(models.Model):
 	email = models.CharField(max_length=100)
 	
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
+
+
+
+
