@@ -1,1 +1,1 @@
-$web: gunicorn asktag.wsgi
+web: python asktag/manage.py runserver "0.0.0.0:$PORT" 
