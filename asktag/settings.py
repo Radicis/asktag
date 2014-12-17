@@ -59,13 +59,9 @@ WSGI_APPLICATION = 'asktag.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db_asktag',		
+        'NAME': 'asktagDB',		
     }
 }
-
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
