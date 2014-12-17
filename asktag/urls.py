@@ -44,6 +44,9 @@ urlpatterns = patterns('',
 	#articles
 	#url(r'^articles/', include('article.urls')),
 	
+	#about page
+	url(r'^about/', 'article.views.about_page'),
+	
 	#admin
     url(r'^admin/', include(admin.site.urls)),
 	

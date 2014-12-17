@@ -19,8 +19,9 @@
 				{% endfor %}	
 				</div>
 				<div class="post-info clear-fix">					
-					<span class="liked-by">Liked by: 
+					<span class="liked-by"> 
 					<ul id="liked-by">
+					<li>Liked by: </li>
 					{% for like in article.liked_by %}
 						{% if like == "" %}
 						{% else %}

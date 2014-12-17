@@ -152,3 +152,8 @@ def view_tags(request):
 	args['topPosts']= getTopPosts(5)
 	args['tags'] = tags
 	return render(request, 'tags.html', args)
+	
+def about_page(request):
+	args = {}
+	args['topPosts']= getTopPosts(5)	
+	return render(request, 'about.html', args)
