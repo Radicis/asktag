@@ -41,7 +41,7 @@
 				<h3>Search</h3>
 					{% csrf_token %}
 					<form autocomplete="off">
-						<input type="text" id="search" name="search" />
+						<input type="text" id="search" name="search" placeholder="Tags or keywords" />
 					</form>
 				<ul id="search-results"></ul>
 				
@@ -55,11 +55,12 @@
 					</div>
 				</div>
 				
-			<div id="right-content">
-			
+			<div id="right-content">			
 				{% if user.username %}
-				{{ user.username }}
-				<a href="/accounts/logout">Logout</a>
+					<div id="right-user">
+					Logged in as: {{ user.username }}<br>
+					<a href="/accounts/logout">Logout</a>
+				</div>
 				{% else %}
 				<a href="/accounts/login"><h2>Login</h2></a>
 				{% endif %}

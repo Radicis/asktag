@@ -15,7 +15,7 @@
 						<div class="post-likes clear-fix">
 							Likes: {{ article.likes }} | <a href="/like/{{ article.id }}">Like This Post</a>
 						</div>
-						<ul id="liked-by">
+						<ul id="liked-by" class="hidden">
 							<li>Liked by: </li>
 							{% for like in article.liked_by %}
 								{% if like == "" %}
@@ -23,8 +23,8 @@
 									<li>{{ like.title }}</li>
 								{% endif %}
 							{% endfor %}
-						</ul>
-						<br>
+						</ul>						
+						Comments: <a href="/get/{{ article.id }}/">{{ article.comments }}</a>
 						<div class="post-tags clear-fix">
 							Tags:
 							{% for tag in article.tags %}

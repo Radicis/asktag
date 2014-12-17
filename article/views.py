@@ -118,6 +118,8 @@ def create_comment(request, article_id):
 			c.pub_date = timezone.now()
 			c.article = a
 			c.save()
+			a.comments += 1
+			a.save()
 			
 			return HttpResponseRedirect('/get/%s' % article_id)
 	else:
@@ -136,7 +138,7 @@ def search_titles(request):
 	else:
 		search_text = ''
 	
-	articles = Article.objects.filter(title__contains=search_text) | Article.objects.filter(body__contains=search_text)
+	articles = Article.objects.filter(title__contains=search_text) | Article.objects.filter(body__contains=search_text) | Article.objects.filter(tags__contains=search_text)
 	
 	return render_to_response('ajax_search.html', {'articles':articles})
 
