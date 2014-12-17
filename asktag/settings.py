@@ -40,7 +40,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'article',
 	'userprofile',
-	'simple',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,5 +96,3 @@ import os
 if os.getcwd() == "/app":
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 	
-FACEBOOK_APP_ID = '875663589150492'
-FACEBOOK_APP_SECRET = '5cc948776958a0d716bc9c25178c4e53'
