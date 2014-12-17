@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="view-post">
+{% if article %}
+	<h2>{{ article.title }}</h2>
+	<p>{{ article.body }}</p>
+	<span>{{ article.pub_date }} </span>
+	<p>Likes: {{ article.likes }}</p>
+	<p><a href="/like/{{ article.id }}">Like</a></p>
+
+	<form id="comment-form" action="/comment/{{ article.id }}/" method="POST">
+		{% csrf_token %}
+		<ul>
+			{{ comment_form.as_ul }}
+			<input type="hidden" name="article" value="{{ article.id }}">
+		</ul>
+		<input type="submit" name="submit" value="Save Comment" />	
+	<form><!-- End Make post form -->
+	<ul>
+	{% for comment in comments %}
+		<li>{{ comment.body }}</li>
+	{% endfor %}
+	</ul
+{% else %}
+	<p>No matching post found in database</p>
+{% endif %}
+</div>
+
+{% endblock %}
+

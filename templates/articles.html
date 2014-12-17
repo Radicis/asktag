@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="page_container" class="container">
+<div class="pagination">
+	<ul class="posts content">
+	{% if articles.count > 0 %}
+		{% for article in articles %}
+			<li>				
+				<img class="user-image" src = "" />				
+
+				<div class="">
+				<h3><a href="/get/{{ article.id }}/">{{ article.title|truncatewords:"10" }}</a></h3>
+
+				<div class="post-likes clear-fix">Likes: {{ article.likes }} | <a href="/like/{{ article.id }}">Like This Post</a></div>
+				<div class="post-tags clear-fix">
+				Tags:
+				{% for tag in article.tags %}
+					<a href="/viewtag/{{ tag }}">{{ tag }}</a>
+				{% endfor %}	
+				</div>
+				<div class="post-info clear-fix">					
+					<span class="liked-by">Liked by: 
+					<ul>
+					{% for like in article.liked_by %}
+						<a href="">{{ like.title }}</a>
+					{% endfor %}
+					</ul>
+					</span>
+					<span class="post-user">Posted by: 
+					<span class="post-time">| Posted on: {{ article.pub_date }} </span>
+				</div>
+					</div>
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+	{% else %}
+		<p>None to show</p>
+	{% endif %}
+	
+	<div class="page_navigation"></div>	
+</div>
+
+
+{% endblock %}
+	
+
+
+

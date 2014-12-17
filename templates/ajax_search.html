@@ -1,0 +1,11 @@
+
+	{% if articles.count > 0 %}
+
+		{% for article in articles %}
+			<li><a href="/get/{{ article.id }}/">{{ article.title|truncatewords:"4" }}</a></li>
+		{% endfor %}
+	{% else %}
+
+	<li>Nothing found </li>
+
+	{% endif %}
