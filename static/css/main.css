@@ -19,8 +19,7 @@ body{
 }
 
 .hidden{
-	display:none;
-	visibility:hidden;
+	display:none;	
 }
 
 .clear-fix{
@@ -440,15 +439,16 @@ footer{
 
 @media screen and (max-width: 475px){
 	#main-nav ul li{
-		float:none;
-		
+		float:none;		
 		border-bottom:1px solid #ccc;
 	}
 	#main-nav ul{
+		width:100%;
 		margin-left:-10px;
 	}
 	
 	#main-nav {
+		width:100%;
 		display:none;
 	}	
 
