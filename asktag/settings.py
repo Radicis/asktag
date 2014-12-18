@@ -96,3 +96,10 @@ import os
 if os.getcwd() == "/app":
     DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 	
+AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
+
+MEDIA_ROOT = os.path.join(
+    os.path.abspath(os.path.dirname(__file__)),
+    'media',
+)
+MEDIA_URL = 'media/'

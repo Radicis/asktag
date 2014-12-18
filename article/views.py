@@ -77,10 +77,11 @@ def create(request):
 	
 	if request.POST:		
 		form = ArticleForm(request.POST)		
-
+		
 		if form.is_valid():
-			form.save()
-			
+			article = form.save(commit=False)
+			article.posted_by = request.user
+			article.save()			
 			return HttpResponseRedirect('/')
 	else:
 		form = ArticleForm()
@@ -117,9 +118,11 @@ def create_comment(request, article_id):
 			c = f.save(commit=False)
 			c.pub_date = timezone.now()
 			c.article = a
+			c.posted_by = request.user
 			c.save()
 			a.comments += 1
 			a.save()
+			#increment_posts(request.user)
 			
 			return HttpResponseRedirect('/get/%s' % article_id)
 	else:
@@ -138,7 +141,7 @@ def search_titles(request):
 	else:
 		search_text = ''
 	
-	articles = Article.objects.filter(title__contains=search_text) | Article.objects.filter(body__contains=search_text) | Article.objects.filter(tags__contains=search_text)
+	articles = Article.objects.filter(title__icontains=search_text) | Article.objects.filter(body__icontains=search_text) | Article.objects.filter(tags__icontains=search_text)
 	
 	return render_to_response('ajax_search.html', {'articles':articles})
 

@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
 from forms import UserProfileForm
 from django.contrib.auth.decorators import login_required
+from PIL import Image
 
 
 #decorator - auto checks if user is logged in and if not it redirects to login page
@@ -12,6 +13,9 @@ def user_profile(request):
 		#populate form with details of user profile instance from the post info
 		form = UserProfileForm(request.POST, instance=request.user.profile)
 		if form.is_valid():
+			u = form.save(commit=False)
+			#img = Image.open(request.user.avatar)
+			#u.avatar = img
 			form.save()
 			return HttpResponseRedirect('/accounts/loggedin')
 	else:

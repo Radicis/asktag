@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-
+from django.views.generic.edit import CreateView
+from forms import MyRegistrationForm 
 from article.views import BasePostsView
 
 admin.autodiscover()
@@ -39,6 +40,7 @@ urlpatterns = patterns('',
 	url(r'^accounts/profile/$', 'userprofile.views.user_profile'),
 	
 	#user registration
+	#url(r'^accounts/register/$', CreateView.as_view(template_name='register.html',form_class=MyRegistrationForm, success_url='/accounts/register_success/')),
 	url(r'^accounts/register/$', 'asktag.views.register_user'),
 	url(r'^accounts/register_success/$', 'asktag.views.register_success'),
 	

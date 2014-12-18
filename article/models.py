@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 		
 class SeparatedValuesField(models.TextField):
@@ -35,7 +36,7 @@ class Article(models.Model):
 	tags = SeparatedValuesField()
 	answered = models.BooleanField(default=False)
 	liked_by = SeparatedValuesField(default=' ')
-	posted_by = models.CharField(max_length=200)
+	posted_by = models.ForeignKey(User, blank=True, null=True)
 	comments = models.IntegerField(default=0)
 	
 	class Meta:
@@ -45,7 +46,7 @@ class Article(models.Model):
 		return self.title
 
 class Comment(models.Model):
-	posted_by = models.CharField(max_length=200)
+	posted_by = models.ForeignKey(User, blank=True, null=True)
 	body = models.TextField()
 	pub_date = models.DateTimeField(auto_now_add=True)
 	article = models.ForeignKey(Article)

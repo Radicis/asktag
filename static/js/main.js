@@ -29,7 +29,13 @@ $(document).ready(function(){
 	  $("#comment-nest-form").slideToggle();
 	}); 
 	
-	$('#posts-container').profanityFilter({
+	$('#main-content').profanityFilter({
+    replaceWith: ['fun', 'stuff'],
+    customSwears: ['ass'],
+    externalSwears: '/static/js/vendor/swearWords.json'
+	});
+	
+	$('#search-results').profanityFilter({
     replaceWith: ['fun', 'stuff'],
     customSwears: ['ass'],
     externalSwears: '/static/js/vendor/swearWords.json'
