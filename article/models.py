@@ -56,6 +56,7 @@ class Comment(models.Model):
 	article = models.ForeignKey(Article)
 	likes = models.IntegerField(default=0)
 	liked_by = SeparatedValuesField(default=' ')
+	is_answer = models.BooleanField(default=False)
 	
 
 	

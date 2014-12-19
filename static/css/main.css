@@ -332,7 +332,20 @@ header .logo span{
 }
 
 .view-post-info{
-	font-size:.85em;
+	font-size:.85em;	
+}
+
+.accept-answer{
+	float:right;
+	position:absolute;
+	bottom:5px;
+	right:10px;
+}
+
+.answer{
+	box-shadow: 0 0 2px rgba(0, 150, 255, 1);
+    -webkit-box-shadow: 0 0 2px rgba(0, 150, 255, 1); 
+    -moz-box-shadow: 0 0 2px rgba(0, 150, 255, 1); 
 }
 
 /* --- Tags page style --- */

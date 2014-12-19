@@ -32,16 +32,7 @@ class BasePostsView(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(BasePostsView, self).get_context_data(**kwargs)
 		context['topPosts']= getTopPosts(5)
-		
-		if self.kwargs.get('article_id'):				
-			article_id = self.kwargs.get('article_id', None)
-			article = Article.objects.filter(id=article_id)
-			if article:
-				article = Article.objects.get(id=article_id)
-				#adds comment form to article page
-				context['comment_form'] = CommentForm()
-				context['comments'] = Comment.objects.filter(article=article_id)
-			context['article'] = article
+
 		if self.kwargs.get('tag'):			
 			context['articles'] = Article.objects.filter(tags__contains=self.kwargs.get('tag'))
 			context['tag'] = self.kwargs.get('tag')
@@ -62,11 +53,21 @@ def articles(request):
 	args['topPosts'] = getTopPosts(5)
 	return render(request, 'articles.html', args)
 	
-	
+'''	
 #display article details
 def article(request, article_id=1):
-	return render(request, 'article.html', {'article':Article.objects.get(id=article_id)})
-'''	
+	article = Article.objects.get(id=article_id)
+	#adds comment form to article page
+	args = {}
+	args.update(csrf(request))
+	args['topPosts']= getTopPosts(5)
+	args['comment_form'] = CommentForm()
+	args['user'] = request.user
+	args['comments'] = Comment.objects.filter(article=article_id)
+	args['article'] = article
+	
+	return render(request, 'article.html', args)
+
 
 
 
@@ -157,6 +158,29 @@ def view_tags(request):
 	args['topPosts']= getTopPosts(5)
 	args['tags'] = tags
 	return render(request, 'tags.html', args)
+	
+@login_required	
+def my_questions(request):
+	
+	articles = Article.objects.all().filter(posted_by=request.user)
+	
+	args = {}
+	args.update(csrf(request))
+	
+	args['articles'] = articles
+	args['topPosts'] = getTopPosts(5)
+	return render(request, 'articles.html', args)
+	
+def unanswered(request):
+	
+	articles = Article.objects.all().filter(answered=False)
+	
+	args = {}
+	args.update(csrf(request))
+	
+	args['articles'] = articles
+	args['topPosts'] = getTopPosts(5)
+	return render(request, 'articles.html', args)	
 	
 def about_page(request):
 	args = {}

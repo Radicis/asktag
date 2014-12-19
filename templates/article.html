@@ -8,18 +8,24 @@
 	<p class="view-post-info">
 	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a>
 	Posted by: {{ article.posted_by }} | {{ article.pub_date }}
-	<br>
-	<img src="{{ article.profile_data }}" />
 	</p>	
+
+	
+	
 {% else %}
 	<p>No matching post found in database</p>
 {% endif %}
 </div>
+{% if article %}
 <h3>Comments</h3>
-<ul class="post-list">
+	<ul class="post-list">
 
 		{% for comment in comments %}
-			<li>
+			{% if comment.is_answer %}
+				<li class="answer">
+			{% else %}
+				<li>
+			{% endif %}
 				<img class="user-image" src = "" />	
 				<div class="post">
 					{{ comment.body }}
@@ -27,11 +33,15 @@
 						{{ comment.pub_date }} by {{ comment.posted_by }}<br>
 						Likes: {{ comment.likes }} |<a href="">Like</a>
 					</div>
+					{% if article.posted_by == user %}
+						<div class="accept-answer"><a href="">Accept Answer</a></div>
+					{% endif %}
 				</div>
 			</li>
 		{% endfor %}
 	
 </ul>
+
 	<form id="comment-form" action="/comment/{{ article.id }}/" method="POST">
 		{% csrf_token %}
 		<ul>
@@ -40,6 +50,6 @@
 		</ul>
 		<input type="submit" name="submit" value="Save Comment" />	
 	<form><!-- End Make post form -->
-
+{% endif %}
 {% endblock %}
 

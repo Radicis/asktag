@@ -14,7 +14,13 @@ urlpatterns = patterns('',
 	url(r'^$', BasePostsView.as_view(template_name='articles.html')),
 	
 	url(r'^like/(?P<article_id>\d+)/$', 'article.views.like_article', name='likeAricle'),
-	url(r'^get/(?P<article_id>\d+)/$', BasePostsView.as_view(template_name='article.html')),
+	url(r'^get/(?P<article_id>\d+)/$', 'article.views.article'),
+	
+	#user questions
+	url(r'^myquestions/$', 'article.views.my_questions'),
+	
+	#unanswered
+	url(r'^unanswered/$', 'article.views.unanswered'),
 	
 	#create post
 	url(r'^create/$', 'article.views.create'),

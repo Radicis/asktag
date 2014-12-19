@@ -28,7 +28,7 @@
 					<li><a href="/">Latest</a></li>				
 					<li><a href="/tags">Tags</a></li>
 					<li><a href="/">Unanswered</a></li>
-					<li><a href="/">My questions</a></li>
+					<li><a href="myquestions">My questions</a></li>
 					<li><a href="/about">About</a></li>
 				</ul>
 			</nav>
@@ -57,9 +57,8 @@
 				<div id="right-user">
 					{% if user.username %}					
 						Logged in as: {{ user.username }}<br>
-						<a href="/accounts/profile/">Profile</a> |
 						<a href="/accounts/logout">Logout</a><br>
-						<h3>-<a href="/create/"> Make a Post! </a>-</h3>
+						<h3>-<a href="/create/"> Ask a Question </a>-</h3>
 				
 					{% else %}
 					<a href="/accounts/login"><h2>Login to Post</h2></a>
