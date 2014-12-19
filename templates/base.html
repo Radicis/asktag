@@ -54,17 +54,17 @@
 				</div>
 				
 			<div id="right-content">			
-				{% if user.username %}
-					<div id="right-user">
-					Logged in as: {{ user.username }}<br>
-					<a href="/accounts/profile/">Profile</a> |
-					<a href="/accounts/logout">Logout</a>
+				<div id="right-user">
+					{% if user.username %}					
+						Logged in as: {{ user.username }}<br>
+						<a href="/accounts/profile/">Profile</a> |
+						<a href="/accounts/logout">Logout</a><br>
+						<h3>-<a href="/create/"> Make a Post! </a>-</h3>
+				
+					{% else %}
+					<a href="/accounts/login"><h2>Login to Post</h2></a>
+					{% endif %}					
 				</div>
-				{% else %}
-				<a href="/accounts/login"><h2>Login</h2></a>
-				{% endif %}
-					
-				<h2><a href="/create/">Make a Post!</a></h2>
 				<div id="right-rules-container">
 					<h3>Rules</h3>
 					<div id="right-rules">

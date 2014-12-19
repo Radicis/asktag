@@ -44,6 +44,10 @@ class Article(models.Model):
 	
 	def __unicode__(self):
 		return self.title
+		
+	def profile_data(self):
+		p = self.posted_by.profile
+		return p.avatar
 
 class Comment(models.Model):
 	posted_by = models.ForeignKey(User, blank=True, null=True)

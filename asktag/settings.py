@@ -100,6 +100,6 @@ AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
 
 MEDIA_ROOT = os.path.join(
     os.path.abspath(os.path.dirname(__file__)),
-    'media',
+    '/media/',
 )
-MEDIA_URL = 'media/'
+MEDIA_URL = '/media/'

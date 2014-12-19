@@ -6,8 +6,11 @@
 	<h2>{{ article.title }}</h2>
 	<p>{{ article.body }}</p>
 	<p class="view-post-info">
-	Posted:	{{ article.pub_date }}
-	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a></p>	
+	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a>
+	Posted by: {{ article.posted_by }} | {{ article.pub_date }}
+	<br>
+	<img src="{{ MEDIA_URL }}{{ article.profile_data }}" />
+	</p>	
 {% else %}
 	<p>No matching post found in database</p>
 {% endif %}
