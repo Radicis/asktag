@@ -27,6 +27,7 @@ def register_user(request):
 		if form.is_valid():
 			#add email confirmation
 			form.save()
+
 			return HttpResponseRedirect('/accounts/register_success')
 			
 	args = {}

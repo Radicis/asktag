@@ -9,7 +9,7 @@
 	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a>
 	Posted by: {{ article.posted_by }} | {{ article.pub_date }}
 	<br>
-	<img src="{{ MEDIA_URL }}{{ article.profile_data }}" />
+	<img src="{{ article.profile_data }}" />
 	</p>	
 {% else %}
 	<p>No matching post found in database</p>

@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
-from forms import UserProfileForm
 from django.contrib.auth.decorators import login_required
 from PIL import Image
+
+from forms import UserProfileForm
 
 
 #decorator - auto checks if user is logged in and if not it redirects to login page
@@ -14,9 +15,12 @@ def user_profile(request):
 		form = UserProfileForm(request.POST, instance=request.user.profile)
 		if form.is_valid():
 			u = form.save(commit=False)
-			#img = Image.open(request.user.avatar)
-			#u.avatar = img
-			form.save()
+			#img_name = form.clean_avatar()
+			#img = Image.open(img_name.path)
+			#img.thumbnail((160,160), Image.ANTIALIAS)
+			#img.save(img.filename, 'JPEG')
+			#u.avatar = img_name
+			u.save()
 			return HttpResponseRedirect('/accounts/loggedin')
 	else:
 		#request stores logged in user
