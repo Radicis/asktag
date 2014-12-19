@@ -16,7 +16,7 @@ AWS_ACCESS_KEY_ID = os.environ.get('AKIAJF27PPGQFA73K6WA')
 AWS_SECRET_ACCESS_KEY = os.environ.get('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')
 AWS_STORAGE_BUCKET_NAME = 'asktagavatars'
 
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 
