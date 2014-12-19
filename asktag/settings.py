@@ -110,4 +110,4 @@ MEDIA_ROOT = os.path.join(
     os.path.abspath(os.path.dirname(__file__)),
     '/media/',
 )
-MEDIA_URL = 'http://' + asktagavatars + '.s3.amazonaws.com/'
+MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
