@@ -14,8 +14,13 @@ urlpatterns = patterns('',
 	url(r'^$', BasePostsView.as_view(template_name='articles.html')),
 	
 	url(r'^like/(?P<article_id>\d+)/$', 'article.views.like_article', name='likeAricle'),
-	url(r'^get/(?P<article_id>\d+)/$', 'article.views.article'),
 	
+	url(r'^like_comment/(?P<comment_id>\d+)/$', 'article.views.like_comment', name='likeComment'),
+	
+	url(r'^accept_answer/(?P<comment_id>\d+)/$', 'article.views.accept_answer', name='accept'),
+	
+	url(r'^get/(?P<article_id>\d+)/$', 'article.views.article'),
+		
 	#user questions
 	url(r'^myquestions/$', 'article.views.my_questions'),
 	

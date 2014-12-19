@@ -31,10 +31,10 @@
 					{{ comment.body }}
 					<div class="post-info">
 						{{ comment.pub_date }} by {{ comment.posted_by }}<br>
-						Likes: {{ comment.likes }} |<a href="">Like</a>
+						Likes: {{ comment.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
 					</div>
-					{% if article.posted_by == user %}
-						<div class="accept-answer"><a href="">Accept Answer</a></div>
+					{% if article.posted_by == user and not comment.is_answer %}
+						<div class="accept-answer"><a href="/accept_answer/{{ comment.id }}">Accept Answer</a> {{ comment.is_answer }}</div>
 					{% endif %}
 				</div>
 			</li>

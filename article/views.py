@@ -7,6 +7,7 @@ from django.views.generic.base import TemplateView
 from django.db.models import Count
 from django.utils import timezone
 import re
+
 from django.contrib.auth.decorators import login_required
 
 from article.models import Article, Comment
@@ -108,7 +109,37 @@ def like_article(request, article_id):
 			a.save()
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 	
-
+@login_required	
+def like_comment(request, comment_id):
+	if comment_id:
+		c = Comment.objects.get(id=comment_id)
+		#check if user liked this before
+		if request.user.username in c.liked_by:
+			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+		else:
+			c.likes +=1
+			c.liked_by.append(request.user.username)
+			c.save()
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+	
+@login_required	
+def accept_answer(request, comment_id):
+	
+	if comment_id:
+		c = Comment.objects.get(id=comment_id)		
+		a = c.article
+		if a.posted_by == request.user:
+			#check if already an answer
+			if not c.is_answer:
+				c.is_answer = True	
+				c.body = "hello adam"
+				c.save()
+			if not a.answered:
+				a.answered = True
+				a.save()
+			
+	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+	
 @login_required	
 def create_comment(request, article_id):
 	a = Article.objects.get(id=article_id)
