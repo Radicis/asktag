@@ -12,14 +12,6 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-AWS_ACCESS_KEY_ID = os.environ.get('AKIAJF27PPGQFA73K6WA')
-AWS_SECRET_ACCESS_KEY = os.environ.get('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')
-AWS_STORAGE_BUCKET_NAME = 'asktagavatars'
-
-#STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
@@ -110,4 +102,4 @@ MEDIA_ROOT = os.path.join(
     os.path.abspath(os.path.dirname(__file__)),
     '/media/',
 )
-MEDIA_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+MEDIA_URL = '/media/'

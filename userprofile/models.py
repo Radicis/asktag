@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.conf import settings
 
 
-
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 	avatar = models.ImageField(upload_to=settings.MEDIA_URL, blank=True, null=True)
