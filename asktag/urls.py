@@ -34,6 +34,9 @@ urlpatterns = patterns('',
 	#create comment
 	url(r'^comment/(?P<article_id>\d+)/$', 'article.views.create_comment'),
 	
+	#create comment for answer
+	url(r'^commenta/(?P<answer_id>\d+)/$', 'article.views.create_comment_answer'),
+	
 	#create Answer
 	url(r'^answer/(?P<article_id>\d+)/$', 'article.views.create_answer'),
 	

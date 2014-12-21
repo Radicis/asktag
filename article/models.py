@@ -31,7 +31,8 @@ class Comment(models.Model):
 	posted_by = models.ForeignKey(User, blank=True, null=True)
 	body = models.TextField()
 	pub_date = models.DateTimeField(auto_now_add=True)
-	related_article = models.ForeignKey('Article')	
+	related_article = models.ForeignKey('Article', null=True)	
+	related_answer = models.ForeignKey('Answer', null=True)
 	likes = models.IntegerField(default=0)
 	liked_by = SeparatedValuesField(default=' ')
 	#is_answer = models.BooleanField(default=False)
@@ -43,7 +44,7 @@ class Answer(models.Model):
 	related_article = models.ForeignKey('Article')	
 	likes = models.IntegerField(default=0)
 	liked_by = SeparatedValuesField(default=' ')
-	comments = models.IntegerField(default=0)
+	num_comments = models.IntegerField(default=0)
 	is_answer = models.BooleanField(default=False)
 	comments = models.ManyToManyField(Comment)
 	

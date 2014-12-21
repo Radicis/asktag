@@ -164,6 +164,33 @@ def create_comment(request, article_id):
 	return render(request, 'add_comment.html', args)
 
 @login_required	
+def create_comment_answer(request, answer_id):
+	a = Answer.objects.get(id=answer_id)
+	
+	if request.POST:
+		f = CommentForm(request.POST)
+		if f.is_valid():
+			c = f.save(commit=False)
+			c.pub_date = timezone.now()
+			c.related_answer = a
+			c.posted_by = request.user
+			c.save()
+			a.num_comments += 1
+			a.comments.add(c)
+			a.save()
+					
+			return HttpResponseRedirect('/get/%s' % a.related_article_id)
+	else:
+		f = CommentForm()
+	
+	args = {}
+	args.update(csrf(request))
+	args['article'] = a
+	args['form'] = f
+	
+	return render(request, 'add_comment.html', args)	
+	
+@login_required	
 def create_answer(request, article_id):
 	a = Article.objects.get(id=article_id)
 	

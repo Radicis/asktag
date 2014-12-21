@@ -22,12 +22,14 @@ $(document).ready(function(){
 	  this.classList.toggle("active");
 	}); 
 	
-	$("#comment").click(function(){
-	  $("#comment-form").slideToggle();
+	$(".show-comment-2").click(function(){
+	  $(".comment-form-2").slideToggle();
 	});
-	$("#comment-comment").click(function(){
-	  $("#comment-nest-form").slideToggle();
-	}); 
+	
+	$(".show-comment-main").click(function(){
+	  $(".comment-form-main").slideToggle();
+	});
+
 	
 	$('#main-content').profanityFilter({
     replaceWith: ['fun', 'stuff'],

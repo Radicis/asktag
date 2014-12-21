@@ -238,7 +238,7 @@ header .logo span{
 }
 
 /* --- Fake speech arrow --- */
-
+/*
 .post-list > li:before{
 	width: 0;
 	height: 0;
@@ -278,7 +278,7 @@ header .logo span{
 	border-radius: 25px;
 	border:1px solid #999;	
 }
-
+*/
 .post-list .post{
 	margin-left:22px;
 	overflow:auto;
@@ -341,6 +341,11 @@ header .logo span{
 	box-shadow: 0 0 2px rgba(0, 150, 255, 1);
     -webkit-box-shadow: 0 0 2px rgba(0, 150, 255, 1); 
     -moz-box-shadow: 0 0 2px rgba(0, 150, 255, 1); 
+}
+
+.fake-button{
+	color:#3A6BFF;
+	cursor:pointer;
 }
 
 /* --- Tags page style --- */
