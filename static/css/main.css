@@ -14,8 +14,7 @@ body{
 	font-family: 'Open Sans', sans-serif;
 	font-weight:400;
 	color:#9197A3;
-	background-color: #E9EAED;
-	
+	background-color: #E9EAED;	
 }
 
 .hidden{
@@ -227,6 +226,10 @@ header .logo span{
 	margin-bottom:20px;
 }
 
+#main-content > h2 {
+	padding:10px;
+}
+
 /* --- Post listing --- */
 
 .post-list{
@@ -360,7 +363,7 @@ header .logo span{
 	list-style:none;	
 	margin-left:0px;
 	padding-right:10px;
-
+	font-size:.9em
 }
 
 .comment-list li{

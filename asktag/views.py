@@ -12,7 +12,7 @@ from article.models import Article
 #helper functions
 
 def getTopPosts(num):
-	posts = Article.objects.annotate(num_likes=Count('likes'))
+	posts = Article.objects.all().order_by('-likes')
 	posts = posts[:num]
 	return posts
 	
@@ -30,7 +30,7 @@ def register_user(request):
 		
 		form = MyRegistrationForm(request.POST)
 		if form.is_valid():
-			
+			human = True
 			form.save()
 			return HttpResponseRedirect('/accounts/register_success')
 			

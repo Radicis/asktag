@@ -19,7 +19,7 @@ from forms import AnswerForm
 #helper functions
 
 def getTopPosts(num):
-	posts = Article.objects.annotate(num_likes=Count('likes'))
+	posts = Article.objects.all().order_by('-likes')
 	posts = posts[:num]
 	return posts
 	
@@ -117,7 +117,7 @@ def like_article(request, article_id):
 @login_required	
 def like_comment(request, comment_id):
 	if comment_id:
-		c = Comment.objects.get(id=comment_id)
+		c = Comment.objects.get(id=comment_id)		
 		#check if user liked this before
 		if request.user.username in c.liked_by:
 			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

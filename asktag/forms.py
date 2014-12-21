@@ -6,23 +6,18 @@ from captcha.fields import CaptchaField
 
 
 #inherits from UserCreationForm
-class MyRegistrationForm(UserCreationForm):	
-	model = UserProfile
-	#email = forms.EmailField(required=True)
-	#captcha = CaptchaField()
-	fields = ('username', 'password1', 'password2', 'email')
+class MyRegistrationForm(UserCreationForm):		
+	captcha = CaptchaField()
+	class Meta:
+		model = User
+		fields = ('username', 'password1', 'password2')
 	
 	def save(self, commit=True):
 		user = super(MyRegistrationForm, self).save(commit=False)
-		#user.email = self.cleaned_data['email']
-		
+				
 		if commit:
 			user.save()
 			#makes a copy to userprofile
-			#user.profile
-
-			
-			#new_profile = UserProfile(user=user)
-			#new_profile.save()
+			#user.profile			
 	
 		return user
