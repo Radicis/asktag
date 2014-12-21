@@ -27,7 +27,26 @@ class SeparatedValuesField(models.TextField):
 		value = self._get_val_from_obj(obj)
 		return self.get_db_prep_value(value)
 	
-
+class Comment(models.Model):
+	posted_by = models.ForeignKey(User, blank=True, null=True)
+	body = models.TextField()
+	pub_date = models.DateTimeField(auto_now_add=True)
+	related_article = models.ForeignKey('Article')	
+	likes = models.IntegerField(default=0)
+	liked_by = SeparatedValuesField(default=' ')
+	#is_answer = models.BooleanField(default=False)
+	
+class Answer(models.Model):
+	posted_by = models.ForeignKey(User, blank=True, null=True)
+	body = models.TextField()
+	pub_date = models.DateTimeField(auto_now_add=True)
+	related_article = models.ForeignKey('Article')	
+	likes = models.IntegerField(default=0)
+	liked_by = SeparatedValuesField(default=' ')
+	comments = models.IntegerField(default=0)
+	is_answer = models.BooleanField(default=False)
+	comments = models.ManyToManyField(Comment)
+	
 class Article(models.Model):
 	title = models.CharField(max_length=200)
 	body = models.TextField()
@@ -35,28 +54,16 @@ class Article(models.Model):
 	likes = models.IntegerField(default=0)
 	tags = SeparatedValuesField()
 	answered = models.BooleanField(default=False)
+	num_answers = models.IntegerField(default=0)
 	liked_by = SeparatedValuesField(default=' ')
 	posted_by = models.ForeignKey(User, blank=True, null=True)
-	comments = models.IntegerField(default=0)
-	
+	num_comments = models.IntegerField(default=0)
+	comments = models.ManyToManyField(Comment)
+	answers = models.ManyToManyField(Answer)
+		
 	class Meta:
 		ordering = ["-pub_date"]	
 	
 	def __unicode__(self):
 		return self.title
-		
-	def profile_data(self):
-		p = self.posted_by.profile
-		return p.avatar
 
-class Comment(models.Model):
-	posted_by = models.ForeignKey(User, blank=True, null=True)
-	body = models.TextField()
-	pub_date = models.DateTimeField(auto_now_add=True)
-	article = models.ForeignKey(Article)
-	likes = models.IntegerField(default=0)
-	liked_by = SeparatedValuesField(default=' ')
-	is_answer = models.BooleanField(default=False)
-	
-
-	

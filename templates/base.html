@@ -14,7 +14,7 @@
         <![endif]-->
 		<div id="wrapper">
 		<header>
-			<h1 class="clear-fix logo">Ask<span>Tag</span></h1>
+			<h1 class="clear-fix logo">Someone<span>Asked</span>?</h1>
 			<div id="nav-toggle" class="hidden">
 			Menu
 			<div id="line-container">	
@@ -25,7 +25,7 @@
 		</div>
 			<nav id="main-nav" class="">
 				<ul>
-					<li><a href="/">Latest</a></li>				
+					<li><a href="/">Questions</a></li>				
 					<li><a href="/tags">Tags</a></li>
 					<li><a href="/">Unanswered</a></li>
 					<li><a href="/myquestions/">My questions</a></li>
@@ -44,7 +44,7 @@
 				<ul id="search-results"></ul>
 				
 				<div id="side-top-posts" class="clear-fix">
-						<h3>Top Posts</h3>
+						<h3>Just Asked</h3>
 						<ul>
 							{% for article in topPosts %}
 								<li><a href="/get/{{ article.id }}/">{{ article.title|truncatechars:25 }}</a></li>
@@ -56,8 +56,7 @@
 			<div id="right-content">			
 				<div id="right-user">
 					{% if user.username %}					
-						Logged in as: {{ user.username }}<br>
-						<a href="/accounts/logout">Logout</a><br>
+						Logged in | <a href="/accounts/logout">Logout</a><br>
 						<h3>-<a href="/create/"> Ask a Question </a>-</h3>
 				
 					{% else %}

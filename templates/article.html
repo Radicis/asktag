@@ -1,47 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div id="view-post">
+
 {% if article %}
-	<h2>{{ article.title }}</h2>
+<h2>{{ article.title }}</h2>
+
+<div id="view-post">
+	{% if article.answered %}
+	<h3>ANSWERED</h3>
+	{% endif %}
 	<p>{{ article.body }}</p>
 	<p class="view-post-info">
-	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a>
-	Posted by: {{ article.posted_by }} | {{ article.pub_date }}
-	</p>	
-
-	
-	
-{% else %}
-	<p>No matching post found in database</p>
-{% endif %}
-</div>
-{% if article %}
-<h3>Comments</h3>
+	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a><br>	
+	Posted {{ article.pub_date }}
+	</p>
+	<p><a href="">Comment on this</a></p>	
 	<ul class="post-list">
-
-		{% for comment in comments %}
+		{% for comment in article.comments.all %}			
 			{% if comment.is_answer %}
 				<li class="answer">
 			{% else %}
 				<li>
 			{% endif %}
-				<img class="user-image" src = "" />	
 				<div class="post">
-					{{ comment.body }}
+					<p>{{ comment.body }}</p>
 					<div class="post-info">
-						{{ comment.pub_date }} by {{ comment.posted_by }}<br>
+						{{ comment.pub_date }}<br>
 						Likes: {{ comment.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
-					</div>
-					{% if article.posted_by == user and not comment.is_answer %}
-						<div class="accept-answer"><a href="/accept_answer/{{ comment.id }}">Accept Answer</a> {{ comment.is_answer }}</div>
-					{% endif %}
+					</div>					
 				</div>
 			</li>
 		{% endfor %}
-	
-</ul>
-
 	<form id="comment-form" action="/comment/{{ article.id }}/" method="POST">
 		{% csrf_token %}
 		<ul>
@@ -49,7 +38,44 @@
 			<input type="hidden" name="article" value="{{ article.id }}" />
 		</ul>
 		<input type="submit" name="submit" value="Save Comment" />	
-	<form><!-- End Make post form -->
+	</form><!-- End Make post form -->		
+</ul>
+{% else %}
+	<p>No matching post found in database</p>
+{% endif %}
+</div>
+{% if article %}
+<h3>Answers</h3>
+	<ul class="post-list">
+		{% for answer in article.answers.all %}
+			{% if answer.is_answer %}
+				<li class="answer">
+			{% else %}
+				<li>
+			{% endif %}
+				<div class="post">
+					<p>{{ answer.body }}</p>
+					<div class="post-info">
+						{{ answer.pub_date }}<br>
+						Likes: {{ answer.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
+					</div>
+					{% if article.posted_by == user and not answer.is_answer %}
+						<div class="accept-answer"><a href="/accept_answer/{{ answer.id }}">Accept Answer</a> {{ answer.is_answer }}</div>
+					{% endif %}
+					<p><a href="">Comment on this</a></p>
+				</div>
+			</li>
+		{% endfor %}	
+</ul>
+<h2>Post an Answer</h2>
+	<form id="answer-form" action="/answer/{{ article.id }}/" method="POST">
+		{% csrf_token %}
+		<ul>
+			{{ answer_form.as_ul }}
+			<input type="hidden" name="article" value="{{ article.id }}" />
+		</ul>
+		<input type="submit" name="submit" value="Save Comment" />	
+	</form><!-- End Make post form -->
 {% endif %}
 {% endblock %}
 

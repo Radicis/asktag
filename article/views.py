@@ -10,11 +10,11 @@ import re
 
 from django.contrib.auth.decorators import login_required
 
-from article.models import Article, Comment
+from article.models import Article, Comment, Answer
 
 from forms import ArticleForm
 from forms import CommentForm
-
+from forms import AnswerForm
 
 #helper functions
 
@@ -57,26 +57,23 @@ def articles(request):
 '''	
 #display article details
 def article(request, article_id=1):
-	article = Article.objects.get(id=article_id)
+	article = Article.objects.get(id=article_id)	
 	#adds comment form to article page
 	args = {}
 	args.update(csrf(request))
 	args['topPosts']= getTopPosts(5)
+	args['answer_form'] = AnswerForm()
 	args['comment_form'] = CommentForm()
 	args['user'] = request.user
-	args['comments'] = Comment.objects.filter(article=article_id)
 	args['article'] = article
 	
 	return render(request, 'article.html', args)
 
 
-
-
 #create article	
 #decorator - auto checks if user is logged in and if not it redirects to login page
 @login_required
-def create(request):
-	
+def create(request):	
 	if request.POST:		
 		form = ArticleForm(request.POST)		
 		
@@ -123,16 +120,15 @@ def like_comment(request, comment_id):
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 	
 @login_required	
-def accept_answer(request, comment_id):
+def accept_answer(request, answer_id):
 	
-	if comment_id:
-		c = Comment.objects.get(id=comment_id)		
-		a = c.article
+	if answer_id:
+		c = Answer.objects.get(id=answer_id)		
+		a = c.related_article
 		if a.posted_by == request.user:
 			#check if already an answer
 			if not c.is_answer:
-				c.is_answer = True	
-				c.body = "hello adam"
+				c.is_answer = True					
 				c.save()
 			if not a.answered:
 				a.answered = True
@@ -149,12 +145,39 @@ def create_comment(request, article_id):
 		if f.is_valid():
 			c = f.save(commit=False)
 			c.pub_date = timezone.now()
-			c.article = a
+			c.related_article = a
 			c.posted_by = request.user
 			c.save()
-			a.comments += 1
+			a.num_comments += 1
+			a.comments.add(c)
 			a.save()
-			#increment_posts(request.user)
+					
+			return HttpResponseRedirect('/get/%s' % article_id)
+	else:
+		f = CommentForm()
+	
+	args = {}
+	args.update(csrf(request))
+	args['article'] = a
+	args['form'] = f
+	
+	return render(request, 'add_comment.html', args)
+
+@login_required	
+def create_answer(request, article_id):
+	a = Article.objects.get(id=article_id)
+	
+	if request.POST:
+		f = AnswerForm(request.POST)
+		if f.is_valid():
+			c = f.save(commit=False)
+			c.pub_date = timezone.now()
+			c.related_article = a
+			c.posted_by = request.user
+			c.save()
+			a.num_answers += 1
+			a.answers.add(c)
+			a.save()			
 			
 			return HttpResponseRedirect('/get/%s' % article_id)
 	else:

@@ -86,9 +86,8 @@ header{
 header .logo{
 	float:left;
 	color:#FFCC00;
-	margin-left:40px;
-	text-shadow: 0px -1px rgba(0, 0, 0, 0.5);
-	
+	margin-left:5px;
+	text-shadow: 0px -1px rgba(0, 0, 0, 0.5);	
 }
 
 header .logo span{
@@ -150,6 +149,7 @@ header .logo span{
 #content-wrapper{
 	margin:auto;
 	width:100%;
+	max-width:1100px;
 	padding-top:10px;	
 }
 
@@ -160,7 +160,6 @@ header .logo span{
 	width:200px;
 	padding:10px;
 	height:100%;	
-
 }
 
 #search-form{	
@@ -189,6 +188,7 @@ header .logo span{
 /* --- Right side content --- */
 
 #right-content{
+	padding-top:17px;
 	width:200px;
 	float:right;	
 }
@@ -204,7 +204,7 @@ header .logo span{
 #right-user{
 	text-align:center;
 	background-color:#fefefe;
-	border:1px groove #999;
+	border:1px groove #ccc;
 	padding:5px;
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -226,7 +226,7 @@ header .logo span{
 /* --- Post listing --- */
 
 .post-list{
-	margin-left:-45px;
+	margin-left:-55px;
 	list-style:none;
 }
 
@@ -243,10 +243,10 @@ header .logo span{
 	width: 0;
 	height: 0;
 	border-style: solid;
-	border-width: 10px 20px 10px 0;
+	border-width: 11px 19px 11px 0;
 	border-color: transparent #fefefe transparent transparent;
 	position:absolute;
-	left:55px;
+	left:6px;
 	top:30%;
 	z-index:999;
 	content:" ";
@@ -259,7 +259,7 @@ header .logo span{
 	border-width: 11px 21px 11px 0;
 	border-color: transparent #999 transparent transparent;
 	position:absolute;
-	left:54px;
+	left:4px;
 	top:29%;
 	z-index:111;
 	content:" ";
@@ -280,7 +280,7 @@ header .logo span{
 }
 
 .post-list .post{
-	margin-left:72px;
+	margin-left:22px;
 	overflow:auto;
 	position:relative;
 	padding:3px 0 3px 7px;
@@ -294,11 +294,6 @@ header .logo span{
     -moz-transition: all 0.25s ease-in-out;
 }
 
-.post-list .post:hover{
-	 box-shadow: 0 0 1px rgba(0, 150, 255, 1);
-    -webkit-box-shadow: 0 0 1px rgba(0, 150, 255, 1); 
-    -moz-box-shadow: 0 0 1px rgba(0, 150, 255, 1); 
-}
 
 .post-list h3{
 	padding:5px;

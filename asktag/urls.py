@@ -10,6 +10,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+
 	#home
 	url(r'^$', BasePostsView.as_view(template_name='articles.html')),
 	
@@ -17,7 +18,7 @@ urlpatterns = patterns('',
 	
 	url(r'^like_comment/(?P<comment_id>\d+)/$', 'article.views.like_comment', name='likeComment'),
 	
-	url(r'^accept_answer/(?P<comment_id>\d+)/$', 'article.views.accept_answer', name='accept'),
+	url(r'^accept_answer/(?P<answer_id>\d+)/$', 'article.views.accept_answer', name='accept'),
 	
 	url(r'^get/(?P<article_id>\d+)/$', 'article.views.article'),
 		
@@ -32,6 +33,9 @@ urlpatterns = patterns('',
 	
 	#create comment
 	url(r'^comment/(?P<article_id>\d+)/$', 'article.views.create_comment'),
+	
+	#create Answer
+	url(r'^answer/(?P<article_id>\d+)/$', 'article.views.create_answer'),
 	
 	#display tags
 	url(r'^tags/$', 'article.views.view_tags'),
