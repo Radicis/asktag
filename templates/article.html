@@ -7,21 +7,21 @@
 
 <div id="view-post">
 	{% if article.answered %}
-	<h3>ANSWERED</h3>
+	<h3 class="right">ANSWERED</h3>
 	{% endif %}
 	<p>{{ article.body }}</p>
-	<p class="view-post-info">
+	<p class="post-info">
 	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a><br>	
 	Posted {{ article.pub_date }}
 	</p>
 	<p><div class="fake-button show-comment-main">Comment on this</div></p>	
-	<ul class="post-list">
+	<ul class="comment-list">
 		{% for comment in article.comments.all %}			
 			<li>
 				<div class="post">
 					<p>{{ comment.body }}</p>
 					<div class="post-info">
-						{{ comment.pub_date }}<br>
+						{{ comment.pub_date }}
 						Likes: {{ comment.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
 					</div>						
 				</div>
@@ -29,10 +29,9 @@
 		{% endfor %}
 	<form id="comment-form" class="comment-form-main hidden" action="/comment/{{ article.id }}/" method="POST">
 		{% csrf_token %}
-		<ul>
-			{{ comment_form.as_ul }}
-			<input type="hidden" name="article" value="{{ article.id }}" />
-		</ul>
+		{{ comment_form.body }}
+		<input type="hidden" name="article" value="{{ article.id }}" />
+		<br>
 		<input type="submit" name="submit" value="Save Comment" />	
 	</form><!-- End Make comment form -->		
 </ul>
@@ -44,44 +43,40 @@
 <h3>Answers</h3>
 	<ul class="post-list">
 		{% for answer in article.answers.all %}
-			{% if answer.is_answer %}
-				<li class="answer">
-			{% else %}
+
 				<li>
-			{% endif %}
 				<div class="post">
+					{% if article.answered %}
+						<h3 class="right">ACCEPTED</h3>
+					{% endif %}
 					<p>{{ answer.body }}</p>
 					<div class="post-info">
-						{{ answer.pub_date }}<br>
+						{{ answer.pub_date }} | 
 						Likes: {{ answer.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
 					</div>
 					{% if article.posted_by == user and not answer.is_answer %}
 						<div class="accept-answer"><a href="/accept_answer/{{ answer.id }}">Accept Answer</a> {{ answer.is_answer }}</div>
 					{% endif %}
 					
-						<ul class="post-list">
+						<ul class="comment-list">
 		{% for comment in answer.comments.all %}			
 				<li>
 
-				<div class="post">
+				<div class="">
 					<p>{{ comment.body }}</p>
 					<div class="post-info">
-						{{ comment.pub_date }}<br>
+						{{ comment.pub_date }} | 
 						Likes: {{ comment.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
 					</div>						
 				</div>
 			</li>
 		{% endfor %}
-		</ul>
-					
-					
-					<p><div class="fake-button show-comment-2">Comment on this</div></p>
+		</ul>					
+					<div class="fake-button show-comment-2">Comment on this</div>
 						<form id="comment-form" class="comment-form-2 hidden" class="" action="/commenta/{{ answer.id }}/" method="POST">
 						{% csrf_token %}
-						<ul>
-							{{ comment_form.as_ul }}
-							<input type="hidden" name="article" value="{{ article.id }}" />
-						</ul>
+							{{ comment_form.body }}
+							<input type="hidden" name="article" value="{{ article.id }}" /><br>	
 						<input type="submit" name="submit" value="Save Comment" />	
 					</form><!-- End Make comment form -->	
 				</div>
@@ -91,11 +86,9 @@
 <h2>Post an Answer</h2>
 	<form id="answer-form" action="/answer/{{ article.id }}/" method="POST">
 		{% csrf_token %}
-		<ul>
-			{{ answer_form.as_ul }}
+			{{ answer_form.body }}<br>
 			<input type="hidden" name="article" value="{{ article.id }}" />
-		</ul>
-		<input type="submit" name="submit" value="Save Comment" />	
+		<input type="submit" name="submit" value="Save Answer" />	
 	</form><!-- End Make answer form -->
 {% endif %}
 {% endblock %}

@@ -5,7 +5,9 @@
 	<h2>Register</h2>
 	<form action="/accounts/register/" method="POST">
 		{% csrf_token %}
-		{{ form }}
+		Username: {{ form.username }}<br>
+		Password: {{ form.password1 }}<br>
+		Confirm: {{ form.password2 }}<br>
 		
 		<input type="submit" value="register" />	
 	<form>

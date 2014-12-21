@@ -25,7 +25,8 @@
 		</div>
 			<nav id="main-nav" class="">
 				<ul>
-					<li><a href="/">Questions</a></li>				
+					<li><a href="/">Latest</a></li>
+					<li><a href="/">Popular</a></li>							
 					<li><a href="/tags">Tags</a></li>
 					<li><a href="/">Unanswered</a></li>
 					<li><a href="/myquestions/">My questions</a></li>
@@ -47,6 +48,12 @@
 						<h3>Just Asked</h3>
 						<ul>
 							{% for article in topPosts %}
+								<li><a href="/get/{{ article.id }}/">{{ article.title|truncatechars:25 }}</a></li>
+							{% endfor %}
+						</ul>
+						<h3>Popular</h3>
+						<ul>
+							{% for article in latestPosts %}
 								<li><a href="/get/{{ article.id }}/">{{ article.title|truncatechars:25 }}</a></li>
 							{% endfor %}
 						</ul>

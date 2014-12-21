@@ -15,11 +15,8 @@ def user_profile(request):
 		form = UserProfileForm(request.POST, instance=request.user.profile)
 		if form.is_valid():
 			u = form.save(commit=False)
-			#img_name = form.clean_avatar()
-			#img = Image.open(img_name.path)
-			#img.thumbnail((160,160), Image.ANTIALIAS)
-			#img.save(img.filename, 'JPEG')
-			#u.avatar = img_name
+			#profile = u.profile
+			#profile.save()
 			u.save()
 			return HttpResponseRedirect('/accounts/loggedin')
 	else:

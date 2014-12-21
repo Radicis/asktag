@@ -26,6 +26,10 @@ body{
 	clear:both;
 }
 
+.right{
+	float:right;
+}
+
 a{
 	text-decoration:none;
 	color:#3A6BFF;
@@ -226,7 +230,7 @@ header .logo span{
 /* --- Post listing --- */
 
 .post-list{
-	margin-left:-55px;
+	margin-left:-45px;
 	list-style:none;
 }
 
@@ -280,7 +284,7 @@ header .logo span{
 }
 */
 .post-list .post{
-	margin-left:22px;
+	margin-left:0px;
 	overflow:auto;
 	position:relative;
 	padding:3px 0 3px 7px;
@@ -299,7 +303,7 @@ header .logo span{
 	padding:5px;
 }
 
-.post-list .post-info{
+.post-info{
 	font-size:.75em;
 	color:#999;
 }
@@ -326,27 +330,44 @@ header .logo span{
 	margin-bottom:20px;
 }
 
-.view-post-info{
-	font-size:.85em;	
-}
 
 .accept-answer{
-	float:right;
 	position:absolute;
-	bottom:5px;
+	top:5px;
 	right:10px;
 }
 
-.answer{
+.post-list .answer > .post{
 	box-shadow: 0 0 2px rgba(0, 150, 255, 1);
     -webkit-box-shadow: 0 0 2px rgba(0, 150, 255, 1); 
     -moz-box-shadow: 0 0 2px rgba(0, 150, 255, 1); 
+}
+
+.post-list form{
+	margin-left:20px;
 }
 
 .fake-button{
 	color:#3A6BFF;
 	cursor:pointer;
 }
+
+.fake-button:hover{
+	text-decoration:underline;
+}
+
+.comment-list{
+	list-style:none;	
+	margin-left:0px;
+	padding-right:10px;
+
+}
+
+.comment-list li{
+	border-top:1px solid #ccc;
+}
+
+
 
 /* --- Tags page style --- */
 
@@ -484,7 +505,7 @@ footer{
 	}	
 	
 	.post-list .post{
-		margin-left:43px;
+		margin-left:0px;
 	}
 	
 	.post-list .user-image{
@@ -499,7 +520,7 @@ footer{
 		margin-left:43px;
 	
 	}
-	
+	/*
 	.post-list li:before{
 		width: 0;
 		height: 0;
@@ -525,7 +546,7 @@ footer{
 		z-index:111;
 		content:" ";
 		}
-		
+		*/
 	#nav-toggle{
 		display:block;
 		visibility:show;		

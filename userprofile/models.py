@@ -8,7 +8,7 @@ class UserProfile(models.Model):
 	#needed to make it auto generate this profile
 	#email = models.EmailField(max_length=254)	
 	posts  = models.IntegerField(default=0)
-	#has_posted_recently = models.BooleanField(default=False)
+	has_posted_recently = models.BooleanField(default=False)
 	
 	def __unicode__(self):
 		return unicode(self.user)
@@ -16,7 +16,6 @@ class UserProfile(models.Model):
 	def increment_posts(self):
 		self.posts += 1
 		self.save()
-
 		
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
 

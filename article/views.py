@@ -22,6 +22,11 @@ def getTopPosts(num):
 	posts = Article.objects.annotate(num_likes=Count('likes'))
 	posts = posts[:num]
 	return posts
+	
+def getLatest(num):
+	posts = Article.objects.all()
+	posts = posts[:num]
+	return posts
 
 	
 #base template view
@@ -33,6 +38,7 @@ class BasePostsView(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(BasePostsView, self).get_context_data(**kwargs)
 		context['topPosts']= getTopPosts(5)
+		context['latestPosts']= getLatest(5)
 
 		if self.kwargs.get('tag'):			
 			context['articles'] = Article.objects.filter(tags__contains=self.kwargs.get('tag'))
@@ -62,6 +68,7 @@ def article(request, article_id=1):
 	args = {}
 	args.update(csrf(request))
 	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)
 	args['answer_form'] = AnswerForm()
 	args['comment_form'] = CommentForm()
 	args['user'] = request.user
@@ -88,6 +95,7 @@ def create(request):
 	args = {}
 	args.update(csrf(request))
 	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)
 	
 	args['form'] = form	
 	
@@ -237,6 +245,8 @@ def view_tags(request):
 				tags.append(tag)
 	args = {}
 	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)
+	
 	args['tags'] = tags
 	return render(request, 'tags.html', args)
 	
@@ -250,6 +260,7 @@ def my_questions(request):
 	
 	args['articles'] = articles
 	args['topPosts'] = getTopPosts(5)
+	args['latestPosts']= getLatest(5)
 	return render(request, 'articles.html', args)
 	
 def unanswered(request):
@@ -261,9 +272,11 @@ def unanswered(request):
 	
 	args['articles'] = articles
 	args['topPosts'] = getTopPosts(5)
+	args['latestPosts']= getLatest(5)
 	return render(request, 'articles.html', args)	
 	
 def about_page(request):
 	args = {}
-	args['topPosts']= getTopPosts(5)	
+	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)	
 	return render(request, 'about.html', args)
