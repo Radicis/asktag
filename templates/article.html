@@ -9,7 +9,7 @@
 	{% if article.answered %}
 	<h3 class="right">ANSWERED</h3>
 	{% endif %}
-	<p>{{ article.body }}</p>
+	<p>{{ article.body|linebreaks|urlize }}</p>
 	<p class="post-info">
 	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}">Like</a><br>	
 	Posted {{ article.pub_date }}
@@ -19,7 +19,7 @@
 		{% for comment in article.comments.all %}			
 			<li>
 				<div class="post">
-					<p>{{ comment.body }}</p>
+					<p>{{ comment.body|linebreaks|safe }}</p>
 					<div class="post-info">
 						{{ comment.pub_date }}
 						Likes: {{ comment.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
@@ -49,7 +49,7 @@
 					{% if article.answered %}
 						<h3 class="right">ACCEPTED</h3>
 					{% endif %}
-					<p>{{ answer.body }}</p>
+					<p>{{ answer.body|linebreaks }}</p>
 					<div class="post-info">
 						{{ answer.pub_date }} | 
 						Likes: {{ answer.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
@@ -63,7 +63,7 @@
 				<li>
 
 				<div class="">
-					<p>{{ comment.body }}</p>
+					<p>{{ comment.body|linebreaks }}</p>
 					<div class="post-info">
 						{{ comment.pub_date }} | 
 						Likes: {{ comment.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>

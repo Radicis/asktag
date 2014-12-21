@@ -82,9 +82,9 @@ def article(request, article_id=1):
 @login_required
 def create(request):	
 	if request.POST:		
-		form = ArticleForm(request.POST)		
-		
+		form = ArticleForm(request.POST)
 		if form.is_valid():
+			human = True
 			article = form.save(commit=False)
 			article.posted_by = request.user
 			article.save()			

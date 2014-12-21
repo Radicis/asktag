@@ -10,7 +10,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
-
+	url(r'^captcha/', include('captcha.urls')),
+	
 	#home
 	url(r'^$', BasePostsView.as_view(template_name='articles.html')),
 	
