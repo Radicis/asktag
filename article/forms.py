@@ -25,3 +25,11 @@ class AnswerForm(forms.ModelForm):
 	class Meta:
 		model = Answer
 		fields = ('body',)
+		
+class EditForm(forms.ModelForm):
+	captcha = CaptchaField()
+	#tags = SeparatedValuesField(default=" ")
+	
+	class Meta:
+		model = Article
+		fields = ('title', 'body', 'captcha')

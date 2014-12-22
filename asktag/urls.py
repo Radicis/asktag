@@ -35,6 +35,12 @@ urlpatterns = patterns('',
 	#create post
 	url(r'^ask/$', 'article.views.create'),
 	
+	#edit post
+	url(r'^edit/(?P<article_id>\d+)/$', 'article.views.edit_post'),
+	
+	#edit post
+	#url(r'^edit/$', 'article.views.edit_post'),
+	
 	#create comment
 	url(r'^comment/(?P<article_id>\d+)/$', 'article.views.create_comment'),
 	
@@ -66,9 +72,7 @@ urlpatterns = patterns('',
 	#url(r'^accounts/register/$', CreateView.as_view(template_name='register.html',form_class=MyRegistrationForm, success_url='/accounts/register_success/')),
 	url(r'^accounts/register/$', 'asktag.views.register_user'),
 	url(r'^accounts/register_success/$', 'asktag.views.register_success'),
-	
-	#articles
-	#url(r'^articles/', include('article.urls')),
+
 	
 	#about page
 	url(r'^about/', 'article.views.about_page'),

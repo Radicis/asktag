@@ -35,7 +35,10 @@
 		<input type="submit" name="submit" class="mybutton" value="Save Comment" />	
 	</form><!-- End Make comment form -->		
 </ul>
-<div class="fake-button show-comment-main right">Comment on this</div>	
+<div class="fake-button show-comment-main right">Comment on this</div>
+{% if article.posted_by == user %}
+<a href="/edit/{{ article.id }}"> Edit this Post </a>
+{% endif %}
 {% else %}
 	<p>No matching post found in database</p>
 {% endif %}

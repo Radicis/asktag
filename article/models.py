@@ -26,6 +26,9 @@ class SeparatedValuesField(models.TextField):
     def value_to_string(self, obj):		
 		value = self._get_val_from_obj(obj)
 		return self.get_db_prep_value(value)
+		
+#class tag(models.Model):
+	#name = models.CharField(max_length=100)
 	
 class Comment(models.Model):
 	posted_by = models.ForeignKey(User, blank=True, null=True)
@@ -60,11 +63,12 @@ class Article(models.Model):
 	posted_by = models.ForeignKey(User, blank=True, null=True)
 	num_comments = models.IntegerField(default=0)
 	comments = models.ManyToManyField(Comment)
-	answers = models.ManyToManyField(Answer)
+	answers = models.ManyToManyField(Answer)	
 		
 	class Meta:
 		ordering = ["-pub_date"]	
 	
 	def __unicode__(self):
 		return self.title
+
 

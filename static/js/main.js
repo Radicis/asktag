@@ -1,5 +1,4 @@
 $(function(){
-
 	$('#id_tags').keyup(function(){
 		this.value=this.value.replace(/,/g, "");
 		this.value=this.value.replace(/\s{2,}/g, ' ');
@@ -9,6 +8,10 @@ $(function(){
 
 $(document).ready(function(){
 
+	//$('#id_tags').val($('#id_tags').val().replace(/\W/g, ''));
+
+	//$('#id_tags').val($('#id_tags').val().replace(/[^A-Za-z0-9 ]/, ''));
+	
 	$('#post-container').pajinate({items_per_page : 4});			
 	
 	$("#nav-toggle").click(function(){

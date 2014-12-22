@@ -1,16 +1,14 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 	
-	<form action="/ask/" method="POST">
+	<form action="." method="POST">
 		{% csrf_token %}
 		Title: {{ form.title }}<br>
 		Body: {{ form.body }}<br>
 		Tags: {{ form.tags }}<br>
-		<p>{{ form.captcha }} </p>
-
-		<input type="submit" name="submit" value="Create Article" />	
+		<p>{{ form.captcha }} </p>		
+		<input type="submit" name="submit" value="Save Article" />	
 	<form>
 
 {% endblock %}

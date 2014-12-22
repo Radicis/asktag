@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.core.context_processors import csrf
@@ -14,7 +14,7 @@ from article.models import Article, Comment, Answer
 
 from forms import ArticleForm
 from forms import CommentForm
-from forms import AnswerForm
+from forms import AnswerForm, EditForm
 
 #helper functions
 
@@ -101,6 +101,35 @@ def create(request):
 	
 	return render(request, 'create_article.html', args)
 
+@login_required
+def edit_post(request, article_id):	
+	if article_id:
+		article = get_object_or_404(Article, id=article_id)
+		if article.posted_by != request.user:
+			return HttpResponseForbidden()
+	else:
+		return HttpResponseRedirect('/')
+		
+	if request.POST:
+		form = EditForm(request.POST, instance=article)
+		form.tags = article.tags
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/')
+ 
+	else:
+		form = EditForm(instance=article)
+		
+	args = {}
+	args.update(csrf(request))
+	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)
+
+	args['form'] = form	
+	
+	return render(request, 'edit_article.html', args)	
+	
+	
 @login_required	
 def like_article(request, article_id):
 	if article_id:
