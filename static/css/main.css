@@ -72,7 +72,7 @@ h3 {
 header {
 	overflow:Auto;
 	border-bottom:1px solid #666;
-	padding:5px 5px 5px 15px;
+	padding:5px 5px 10px 15px;
 	-webkit-box-shadow:#333 0 1px 0;
 	-moz-box-shadow:#333 0 1px 0;
 	box-shadow:#333 0 1px 0;
@@ -127,7 +127,8 @@ header .logo span {
 	margin:0;
 	padding:0;
 	overflow:auto;
-	margin-left:70px
+	margin-left:70px;
+	padding-top:5px;
 }
 
 #main-nav ul li {
@@ -502,6 +503,16 @@ header .logo {
 	text-align:center
 }
 
+#logo{
+	width:220px;
+	display:block;
+	margin:auto;
+}
+
+#tagline{
+	
+}
+
 #main-nav {
 	float:none;
 	width:100%
@@ -517,7 +528,7 @@ header .logo {
 
 #main-nav ul li {
 	padding:0;
-	width:16%;
+	width:16.5%;
 	text-align:center
 }
 
