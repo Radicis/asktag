@@ -1,3 +1,11 @@
+$(function(){
+
+	$('#id_tags').keyup(function(){
+		this.value=this.value.replace(/,/g, "");
+		this.value=this.value.replace(/\s{2,}/g, ' ');
+	});
+});
+
 
 $(document).ready(function(){
 

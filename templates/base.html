@@ -13,7 +13,9 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 		<div id="wrapper">
+		
 		<header>
+		
 			<h1 class="clear-fix logo">Someone<span>Asked</span>?</h1>
 			<div id="nav-toggle" class="hidden">
 			Menu
@@ -34,9 +36,11 @@
 				</ul>
 			</nav>
 		</header>
+		
 		<div id="content-wrapper"><!-- Begin content area --->			
 			
 			<div id="side-content">
+				
 				<h3>Search</h3>
 					{% csrf_token %}
 					<form autocomplete="off">
@@ -61,6 +65,7 @@
 				</div>
 				
 			<div id="right-content">			
+				
 				<div id="right-user">
 					{% if user.username %}					
 						Logged in | <a href="/accounts/logout">Logout</a><br>
@@ -71,6 +76,7 @@
 					or <a href="/accounts/register/">Register</a>
 					{% endif %}					
 				</div>
+				
 				<div id="right-rules-container">
 					<h3>Rules</h3>
 					<div id="right-rules">
@@ -86,11 +92,9 @@
 				</div>					
 			</div><!-- End right content --->
 			
-			<div id="main-content">
-			<!-- Block Content Area -->
+			<div id="main-content"><!-- Block Content Area -->			
 				
-				{% block content %}{% endblock %}				
-				
+				{% block content %}{% endblock %}					
 			
 			</div><!-- End block content area -->
 			

@@ -8,7 +8,7 @@
 
 {% block content %}
 	
-	<form action="/create/" method="POST">
+	<form action="/ask/" method="POST">
 		{% csrf_token %}
 		Title: {{ form.title }}<br>
 		Body: {{ form.body }}<br>
