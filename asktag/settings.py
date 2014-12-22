@@ -73,7 +73,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GMT'
 
 USE_I18N = True
 
@@ -99,8 +99,3 @@ if os.getcwd() == "/app":
 	
 AUTH_PROFILE_MODULE = 'userprofile.UserProfile'
 
-MEDIA_ROOT = os.path.join(
-    os.path.abspath(os.path.dirname(__file__)),
-    '/media/',
-)
-MEDIA_URL = '/media/'
