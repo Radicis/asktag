@@ -56,7 +56,7 @@
 					<p>{{ answer.body|linebreaksbr }}</p>
 					<div class="post-info">
 						{{ answer.pub_date }} | 
-						Likes: {{ answer.likes }} |<a href="/like_comment/{{ comment.id }}">Like</a>
+						Likes: {{ answer.likes }} |<a href="/like_answer/{{ answer.id }}">Like</a>
 					</div>
 					{% if article.posted_by == user and not answer.is_answer %}
 						<div class="accept-answer"><a href="/accept_answer/{{ answer.id }}">Accept Answer</a></div>

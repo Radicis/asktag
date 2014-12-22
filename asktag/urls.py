@@ -17,7 +17,7 @@ urlpatterns = patterns('',
 	
 	url(r'^like/(?P<article_id>\d+)/$', 'article.views.like_article', name='likeAricle'),
 	
-	url(r'^like_comment/(?P<comment_id>\d+)/$', 'article.views.like_comment', name='likeComment'),
+	url(r'^like_answer/(?P<answer_id>\d+)/$', 'article.views.like_answer', name='likeAnswer'),
 	
 	url(r'^accept_answer/(?P<answer_id>\d+)/$', 'article.views.accept_answer', name='accept'),
 	

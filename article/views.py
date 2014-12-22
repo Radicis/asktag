@@ -167,16 +167,16 @@ def like_article(request, article_id):
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 	
 @login_required	
-def like_comment(request, comment_id):
-	if comment_id:
-		c = Comment.objects.get(id=comment_id)		
+def like_answer(request, answer_id):
+	if answer_id:
+		a = Answer.objects.get(id=answer_id)		
 		#check if user liked this before
-		if request.user.username in c.liked_by:
+		if request.user.username in a.liked_by:
 			return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 		else:
-			c.likes +=1
-			c.liked_by.append(request.user.username)
-			c.save()
+			a.likes +=1
+			a.liked_by.append(request.user.username)
+			a.save()
 	return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 	
 @login_required	
