@@ -6,8 +6,17 @@ $(function(){
 });
 
 
+
+
 $(document).ready(function(){
 
+	$('.delete').click(function(){
+		var checkStr = confirm('Are you sure you want to delete this?');
+		if(checkStr == true){
+			
+		}
+	});
+	
 	//$('#id_tags').val($('#id_tags').val().replace(/\W/g, ''));
 
 	//$('#id_tags').val($('#id_tags').val().replace(/[^A-Za-z0-9 ]/, ''));

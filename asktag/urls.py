@@ -38,8 +38,11 @@ urlpatterns = patterns('',
 	#edit post
 	url(r'^edit/(?P<article_id>\d+)/$', 'article.views.edit_post'),
 	
-	#edit post
-	#url(r'^edit/$', 'article.views.edit_post'),
+	#delete post
+	url(r'^delete/(?P<article_id>\d+)/$', 'article.views.delete_post'),
+	
+	#delete answer
+	url(r'^delete_answer/(?P<answer_id>\d+)/$', 'article.views.delete_answer'),
 	
 	#create comment
 	url(r'^comment/(?P<article_id>\d+)/$', 'article.views.create_comment'),

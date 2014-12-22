@@ -129,6 +129,29 @@ def edit_post(request, article_id):
 	
 	return render(request, 'edit_article.html', args)	
 	
+@login_required
+def delete_post(request, article_id):
+	if article_id:
+		article = get_object_or_404(Article, id=article_id)
+		if article.posted_by != request.user:
+			return HttpResponseForbidden()
+	if article.posted_by == request.user:
+		article.delete()
+		return HttpResponseRedirect('/')
+		
+	return HttpResponseRedirect('/')
+	
+@login_required
+def delete_answer(request, answer_id):
+	if answer_id:
+		answer = get_object_or_404(Answer, id=answer_id)
+		if answer.posted_by != request.user:
+			return HttpResponseForbidden()
+	if answer.posted_by == request.user:
+		answer.delete()
+		return HttpResponseRedirect('/')
+		
+	return HttpResponseRedirect('/')
 	
 @login_required	
 def like_article(request, article_id):

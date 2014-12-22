@@ -37,7 +37,7 @@
 </ul>
 <div class="fake-button show-comment-main right">Comment on this</div>
 {% if article.posted_by == user %}
-<a href="/edit/{{ article.id }}"> Edit this Post </a>
+<a href="/edit/{{ article.id }}"> Edit this Post </a> | <a class="delete" href="/delete/{{ article.id }}"> Delete this Post </a>
 {% endif %}
 {% else %}
 	<p>No matching post found in database</p>
@@ -76,6 +76,9 @@
 		{% endfor %}
 		</ul>					
 					<div class="fake-button show-comment-2 right">Comment on this</div>
+					{% if answer.posted_by == user %}
+					<a class="delete" href="/delete_answer/{{ answer.id }}"> Delete this Answer </a>
+					{% endif %}
 						<form id="comment-form" class="comment-form-2 hidden" class="" action="/commenta/{{ answer.id }}/" method="POST">
 						{% csrf_token %}
 							{{ comment_form.body }}
