@@ -306,7 +306,7 @@ header .logo span{
 
 
 .post-list h3{
-	padding:5px;
+	
 }
 
 .post-info{
@@ -340,6 +340,17 @@ header .logo span{
 	overflow:auto;
 	position:relative;
 }
+
+#view-post .post-info{
+	text-align:right;
+	margin-right:10px;
+}
+
+.answer-list .post-info{
+	text-align:right;
+	margin-right:10px;
+}
+
 
 .article-body{
 	padding:10px;
