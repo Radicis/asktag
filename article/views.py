@@ -27,7 +27,6 @@ def getLatest(num):
 	posts = Article.objects.all()
 	posts = posts[:num]
 	return posts
-
 	
 #base template view
 

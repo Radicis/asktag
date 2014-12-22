@@ -105,6 +105,17 @@ header .logo span {
 	color:#fefefe
 }
 
+#logo{
+	position:relative;
+}
+
+#tagline{
+	position:absolute;
+	top:28px;
+	left:72px;
+	font-size:.75em;
+}	
+
 #main-nav {
 	float:left
 }
