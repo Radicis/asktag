@@ -323,6 +323,18 @@ header .logo span {
 	opacity:.8
 }
 
+.page_navigation{
+	text-align:right;	
+}
+
+.page_navigation a{
+	margin-right:7px;
+}
+
+.first_link, .next_link{
+	font-weight:700;
+}
+
 /* --- Post view page --- */
 #view-post {
 	background-color:#fefefe;

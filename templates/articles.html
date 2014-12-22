@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id="post-container">
+<div id="post-container" class="container">
 
-	<ul class="post-list">
+	<ul class="post-list content">
 	{% if articles.count > 0 %}
 		{% for article in articles %}
 			<li>				

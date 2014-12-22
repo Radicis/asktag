@@ -9,7 +9,7 @@ $(function(){
 
 $(document).ready(function(){
 
-	//$('#page_container').pajinate({items_per_page : 6});			
+	$('#post-container').pajinate({items_per_page : 4});			
 	
 	$("#nav-toggle").click(function(){
 	  $("#main-nav").slideToggle();

@@ -304,3 +304,9 @@ def about_page(request):
 	args['topPosts']= getTopPosts(5)
 	args['latestPosts']= getLatest(5)	
 	return render(request, 'about.html', args)
+	
+def privacy(request):
+	args = {}
+	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)	
+	return render(request, 'privacy.html', args)

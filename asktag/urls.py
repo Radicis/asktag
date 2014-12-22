@@ -72,6 +72,9 @@ urlpatterns = patterns('',
 	
 	#about page
 	url(r'^about/', 'article.views.about_page'),
+
+	#privacy page
+	url(r'^privacy/', 'article.views.privacy'),
 	
 	#admin
     url(r'^admin/', include(admin.site.urls)),
