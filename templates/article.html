@@ -6,11 +6,11 @@
 
 
 <div id="view-post">
-	<h2>{{ article.title }}</h2>
+	<h2 class="left">{{ article.title }}</h2>
 	{% if article.answered %}
 	<h3 class="right">ANSWERED</h3>
 	{% endif %}
-	<p>{{ article.body|linebreaksbr }}</p>
+	<p class="clear-fix article-body">{{ article.body|linebreaksbr }}</p>
 	<p class="post-info">
 	Likes: {{ article.likes }} |<a href="/like/{{ article.id }}"> Like</a> |
 	Posted {{ article.pub_date }} |
@@ -18,8 +18,7 @@
 {% for tag in article.tags %}
 	<a href="/viewtag/{{ tag }}">{{ tag }}</a>
 {% endfor %}	
-	</p>
-	<div class="fake-button show-comment-main">Comment on this</div>	
+	</p>	
 	<ul class="comment-list">
 		{% for comment in article.comments.all %}			
 			<li>
@@ -33,9 +32,10 @@
 		{{ comment_form.body }}
 		<input type="hidden" name="article" value="{{ article.id }}" />
 		<br>
-		<input type="submit" name="submit" value="Save Comment" />	
+		<input type="submit" name="submit" class="mybutton" value="Save Comment" />	
 	</form><!-- End Make comment form -->		
 </ul>
+<div class="fake-button show-comment-main right">Comment on this</div>	
 {% else %}
 	<p>No matching post found in database</p>
 {% endif %}
@@ -47,7 +47,7 @@
 
 				<li>
 				<div class="post">
-					{% if article.answered %}
+					{% if answer.is_answer %}
 						<h3 class="right">ACCEPTED</h3>
 					{% endif %}
 					<p>{{ answer.body|linebreaksbr }}</p>
@@ -72,12 +72,12 @@
 			</li>
 		{% endfor %}
 		</ul>					
-					<div class="fake-button show-comment-2">Comment on this</div>
+					<div class="fake-button show-comment-2 right">Comment on this</div>
 						<form id="comment-form" class="comment-form-2 hidden" class="" action="/commenta/{{ answer.id }}/" method="POST">
 						{% csrf_token %}
 							{{ comment_form.body }}
 							<input type="hidden" name="article" value="{{ article.id }}" /><br>	
-						<input type="submit" name="submit" value="Save Comment" />	
+						<input type="submit" name="submit" class="mybutton" value="Save Comment" />	
 					</form><!-- End Make comment form -->	
 				</div>
 			</li>
@@ -88,7 +88,7 @@
 		{% csrf_token %}
 			{{ answer_form.body }}<br>
 			<input type="hidden" name="article" value="{{ article.id }}" />
-		<input type="submit" name="submit" value="Save Answer" />	
+		<input type="submit" name="submit" class="mybutton" value="Save Answer" />	
 	</form><!-- End Make answer form -->
 {% endif %}
 {% endblock %}

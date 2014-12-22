@@ -15,6 +15,7 @@ body{
 	font-weight:400;
 	color:#9197A3;
 	background-color: #E9EAED;	
+	
 }
 
 .hidden{
@@ -24,9 +25,11 @@ body{
 .clear-fix{
 	clear:both;
 }
-
 .right{
 	float:right;
+}
+.left{
+	float:left;
 }
 
 a{
@@ -233,14 +236,14 @@ header .logo span{
 /* --- Post listing --- */
 
 .post-list{
-	margin-left:-45px;
+	padding:0;
 	list-style:none;
 }
 
 .post-list > li{
 	padding:2px;	
 	margin-bottom:10px;
-	overflow:auto;
+	overflow:show;
 	position:relative;
 }
 
@@ -311,15 +314,17 @@ header .logo span{
 	color:#999;
 }
 
-#liked-by{
-	margin-left:-40px;
-	list-style:none;
+.icon{
+	position:absolute;
+	top:5px;
+	right:5px;
+	width:35px;
+	height:35px;
+	z-index:999;	
+	opacity:0.8;
 }
 
-#liked-by li{
-	float:left;
-	margin-right:5px;
-}
+
 
 /* --- Post view page --- */
 
@@ -331,6 +336,13 @@ header .logo span{
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	margin-bottom:20px;
+	margin-top:10px;
+	overflow:auto;
+	position:relative;
+}
+
+.article-body{
+	padding:10px;
 }
 
 
@@ -353,17 +365,37 @@ header .logo span{
 .fake-button{
 	color:#3A6BFF;
 	cursor:pointer;
+	margin-right:10px;
+	
 }
 
 .fake-button:hover{
 	text-decoration:underline;
 }
 
+.mybutton{	
+	position:relative;
+    padding:1px 6px;
+    border:2px solid #207cca;
+    background-color:#207cca;
+    color:#fafafa;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin-top:5px;
+}
+
+.mybutton:hover{
+	background-color:#FFCC00;
+    color:#207cca;
+}
+
 .comment-list{
 	list-style:none;	
 	margin-left:0px;
 	padding-right:10px;
-	font-size:.9em
+	font-size:.9em;
+
 }
 
 .comment-list li{
@@ -373,6 +405,10 @@ header .logo span{
 
 
 /* --- Tags page style --- */
+
+#tags{
+	overflow:auto;
+}
 
 #tags li{
 	display:block;
@@ -409,37 +445,36 @@ footer{
 	padding:5px;
 }
 
+footer nav{
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+footer ul{
+	list-style:none;	
+	padding:0;
+	display:inline-block;	
+}
+
+footer ul li{
+	float:left;
+	padding-right:10px;
+	padding-top:10px;
+}
 
 /* --- Media Queries --- */
 
-@media screen and (max-width: 900px){
-		#main-content{
-			margin-right:20px;
-		}		
-		#right-content{
-			float:left;
-			clear:both;
-			padding-left:5px;
-		}
-		#posts-container{
-			margin-right:50px;			
-		}
-}
-
-@media screen and (max-width: 670px){
-	
-	#search-form{
-		display:none;
-		visibility:hidden;
-	}
+@media screen and (max-width: 840px){
 	header  .logo{
 		display:block;
 		margin:auto;
 		float:none;
 		text-align:center;
 	}
-	header nav{
+	#main-nav{
 		float:none;
+		width:100%;
 	}
 	#main-nav ul {
 		display:block;
@@ -447,6 +482,44 @@ footer{
 		float:none;		
 		clear:both;
 		margin:auto;
+	}
+	
+	#main-nav ul li{
+		padding:0;
+		width:16%;
+		text-align:center;
+	}
+	
+	#main-content{
+		margin-right:20px;
+	}		
+	
+	#right-content{
+		float:left;
+		clear:both;
+		padding-left:5px;
+	}
+	
+	#posts-container{
+		margin-right:50px;			
+	}
+}
+
+@media screen and (max-width: 670px){
+	#main-nav ul li{
+		float:none;		
+		border-bottom:1px solid #ccc;
+		width:100%;
+		text-align:left;
+	}
+	#main-nav ul{
+		width:100%;
+		margin-left:-10px;
+	}
+	
+	#main-nav {
+		width:100%;
+		display:none;
 	}
 	
 	#main-content{
@@ -463,6 +536,11 @@ footer{
 		margin:auto;
 		width:200px;
 		float:none;
+		margin-top:-20px;
+	}
+	
+	#right-content h3{
+		display:none;
 	}
 	
 	#side-content{
@@ -480,32 +558,23 @@ footer{
 	#right-rules-container{
 		display:none;
 	}
+	
+	#nav-toggle{
+		display:block;
+		visibility:show;		
+	}
 
 }
 
 @media screen and (max-width: 475px){
-	#main-nav ul li{
-		float:none;		
-		border-bottom:1px solid #ccc;
-	}
-	#main-nav ul{
-		width:100%;
-		margin-left:-10px;
-	}
 	
-	#main-nav {
-		width:100%;
-		display:none;
-	}	
 
 	#main-content{
 		margin-right:4px;
 		margin-left:7px;
 	}	
 	
-	.post-list{
-		margin-left:-45px;
-	}	
+	
 	
 	.post-list .post{
 		margin-left:0px;
@@ -550,10 +619,7 @@ footer{
 		content:" ";
 		}
 		*/
-	#nav-toggle{
-		display:block;
-		visibility:show;		
-	}
+
 
 }
 

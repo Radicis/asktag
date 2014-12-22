@@ -225,6 +225,30 @@ def create_answer(request, article_id):
 	
 	return render(request, 'add_comment.html', args)
 	
+def popular_posts(request):
+	
+	articles =  Article.objects.all().order_by('-likes')
+	
+	args = {}
+	args.update(csrf(request))
+	
+	args['articles'] = articles
+	args['topPosts'] = getTopPosts(5)
+	args['latestPosts']= getLatest(5)
+	return render(request, 'articles.html', args)
+	
+def unanswered(request):
+	
+	articles = Article.objects.all().filter(answered=False).order_by('-likes')
+	
+	args = {}
+	args.update(csrf(request))
+	
+	args['articles'] = articles
+	args['topPosts'] = getTopPosts(5)
+	args['latestPosts']= getLatest(5)
+	return render(request, 'articles.html', args)
+	
 def search_titles(request):
 	if request.POST:
 		search_text = request.POST['search_text']

@@ -26,11 +26,11 @@
 			<nav id="main-nav" class="">
 				<ul>
 					<li><a href="/">Latest</a></li>
-					<li><a href="/">Popular</a></li>							
+					<li><a href="/popular">Popular</a></li>							
 					<li><a href="/tags">Tags</a></li>
-					<li><a href="/">Unanswered</a></li>
+					<li><a href="/unanswered">Unanswered</a></li>
 					<li><a href="/myquestions/">My questions</a></li>
-					<li><a href="/about">About</a></li>
+					<li><a href="/ask">Ask</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -64,7 +64,7 @@
 				<div id="right-user">
 					{% if user.username %}					
 						Logged in | <a href="/accounts/logout">Logout</a><br>
-						<h3>-<a href="/create/"> Ask a Question </a>-</h3>
+						<h3>-<a href="/ask/"> Ask a Question </a>-</h3>
 				
 					{% else %}
 					<a href="/accounts/login"><h2>Login to Post</h2></a>
@@ -97,7 +97,14 @@
 	</div><!-- End main-content wrapper  --> 
 	
 	<footer>
-        <p>&copy; Adam Lloyd 2014</p>
+		<nav>
+			<ul>
+				<li><a href="about/">About</a></li>
+				<li><a href="">Privacy</a></li>
+				<li><a href="">Contact</a></li>
+			</ul>
+		</nav>
+	   <p>&copy; Adam Lloyd 2014</p>
     </footer>
 	
     </div> <!-- /container -->       

@@ -6,7 +6,13 @@
 	{% if articles.count > 0 %}
 		{% for article in articles %}
 			<li>				
-				<!-- <img class="user-image" src = "" />	-->
+				{% if article.answered %}
+					{% load staticfiles %}
+					<img class="icon" title="Answered x {{ article.num_answers }}" alt="Answered" src = "{% static "img/tick.png" %}" />
+				{% elif article.likes >= 10 %}
+					{% load staticfiles %}
+					<img class="icon" title="Need Answer" alt="Need Answer" src = "{% static "img/alert.png" %}" />
+				{% endif %}
 				<div class="post">
 
 					<h3><a href="/get/{{ article.id }}/">{{ article.title|truncatewords:"10" }}</a></h3>					

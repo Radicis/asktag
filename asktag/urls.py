@@ -28,9 +28,12 @@ urlpatterns = patterns('',
 	
 	#unanswered
 	url(r'^unanswered/$', 'article.views.unanswered'),
+
+	#popular
+	url(r'^popular/$', 'article.views.popular_posts'),
 	
 	#create post
-	url(r'^create/$', 'article.views.create'),
+	url(r'^ask/$', 'article.views.create'),
 	
 	#create comment
 	url(r'^comment/(?P<article_id>\d+)/$', 'article.views.create_comment'),
