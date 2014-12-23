@@ -261,48 +261,7 @@ header .logo span {
 	position:relative
 }
 
-/* --- Fake speech arrow --- */
-/*
-.post-list > li:before{
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 11px 19px 11px 0;
-	border-color: transparent #fefefe transparent transparent;
-	position:absolute;
-	left:6px;
-	top:30%;
-	z-index:999;
-	content:" ";
-}
 
-.post-list > li:after{
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 11px 21px 11px 0;
-	border-color: transparent #999 transparent transparent;
-	position:absolute;
-	left:4px;
-	top:29%;
-	z-index:111;
-	content:" ";
-}
-
-
-.post-list .user-image{
-	width:50px;
-	height:50px;
-	top:15%;
-	padding:0;
-	margin:0;
-	position:absolute;
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
-	border-radius: 25px;
-	border:1px solid #999;	
-}
-*/
 .post-list .post {
 	margin-left:0;
 	overflow:auto;
@@ -333,7 +292,7 @@ header .logo span {
 	width:35px;
 	height:35px;
 	z-index:999;
-	opacity:.8
+	opacity:.7
 }
 
 .page_navigation{
@@ -346,6 +305,13 @@ header .logo span {
 
 .first_link, .next_link{
 	font-weight:700;
+}
+
+/* ---Form styling --- */
+
+#id_tags{
+	width:80%;
+	height:20px;
 }
 
 /* --- Post view page --- */
