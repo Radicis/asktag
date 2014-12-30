@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<h2>Log in</h2>
 	{% if form.errors %}
 		<p class="error">Sorry, invalid credentials</p>
 	{% endif %}
 	
-	<form action="/accounts/auth/" method="post">
+	<form class="user-form" action="/accounts/auth/" method="post">
+		<p>Enter a valid username and password here to log in</p>
 		{% csrf_token %}
 		<label for="username">User name: </label>
 		<input type='text' name='username' value='' id='username'><br>
 		<label for="password">Password: </label>
-		<input type='password' name='password' value='' id='password'>				
-		<input type='submit' value='Login' />	
+		<input type='password' name='password' value='' id='password'>	<br>			
+		<input type='submit' value='Login' class="mybutton" />	
+		<p>Don't have an account? <a href="/accounts/register/">Register</a></p>
 	</form>
 	
-	<p>Don't have an account? <a href="/accounts/register/">Register</a></p>
+	
 {% endblock %}

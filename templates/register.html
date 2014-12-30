@@ -3,13 +3,10 @@
 {% block content %}
 	
 	<h2>Register</h2>
-	<form action="/accounts/register/" method="POST">
+	<form class="user-form" action="/accounts/register/" method="POST">
+		<p><small>Your Username will not be shown anywhere on the site but will be used to manage your posts and allow liking and commenting.</small></p>
 		{% csrf_token %}
-		Username: {{ form.username }}<br>
-		Password: {{ form.password1 }}<br>
-		Confirm: {{ form.password2 }}<br>
-		{{ form.captcha }}<br>
-		
+		{{ form.as_p }}		
 		<input type="submit" class="mybutton" value="Register" />	
 	<form>
 

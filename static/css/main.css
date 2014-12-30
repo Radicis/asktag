@@ -177,6 +177,40 @@ header .logo span {
 	padding-top:10px
 }
 
+/* ---- User forms styling --- */
+
+.user-form{
+	background-color:#fefefe;
+	border:1px groove #ccc;
+	padding:0 10px 10px 10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	margin-right:5px;
+	display:block;
+	margin-bottom:5px
+}
+
+.user-form label{
+	display:inline-block;	
+	width:160px;
+}
+
+.user-form input{
+	margin-bottom:10px;
+	border:1px solid #999;
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	vertical-align:top;
+}
+
+.helptext{
+	display:none;
+}
+
+
+
 /* ---- Left side content --- */
 #side-content {
 	float:left;
@@ -246,6 +280,19 @@ header .logo span {
 
 #main-content > h2 {
 	padding:10px
+}
+
+.static-content{
+	
+	background-color:#fefefe;
+	border:1px groove #ccc;
+	padding:15px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	border-radius:10px;
+	margin-right:5px;
+	display:block;
+	margin-bottom:5px
 }
 
 /* --- Post listing --- */
@@ -436,10 +483,8 @@ header .logo span {
 footer {
 	clear:both;
 	text-align:center;
-	border-top:1px solid #ccc;
-	font-size:.75em;
-	border:1px solid #ccc;
-	padding:5px
+	font-size:.8em;
+	border:1px solid #ccc;	
 }
 
 footer nav {
@@ -594,32 +639,6 @@ header .logo {
 
 .post-list > div {
 	margin-left:43px
-}/*
-	.post-list li:before{
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 5px 10px 5px 0;
-		border-color: transparent #fefefe transparent transparent;
-		position:absolute;
-		left:36px;
-		top:30%;
-		z-index:999;
-		content:" ";
-		}
-
-	.post-list li:after{
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 6px 11px 6px 0;
-		border-color: transparent #999 transparent transparent;
-		position:absolute;
-		left:35px;
-		top:29%;
-		z-index:111;
-		content:" ";
-		}
-		*/
+}
 
 }

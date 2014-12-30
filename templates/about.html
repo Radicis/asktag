@@ -2,15 +2,21 @@
 {% block content %}
 
 <h2>About this site </h2>
-<p>
+<div class="static-content">
+
 This web application was created to develop my MVC and Python skills as well as perhaps someday providing a place where students can ask questions to their peer group and get jargon-free answers on a varied subject matter.
-</p>
+
 <p>It demonstrates the following features:</p>
 <ul>
-	<li><strong>User login using Google's users service which lets the application integrate with Google user accounts.</strong><em> With the Users service, your users can use the Google accounts they already have to sign in to the application.</em></li>
-	<li><strong>Persistent data storage on the GAE datastore.</strong> <em>The Datastore holds data objects known as entities. An entity has one or more properties, named values of one of several supported data types: for instance, a property can be a string, an integer, or a reference to another entity. Each entity is identified by its kind, which categorizes the entity for the purpose of queries, and a key that uniquely identifies it within its kind.</em></li>
-	<li><strong>Use of the GAE templating system.</strong> <em>HTML embedded in code is messy and difficult to maintain. It's better to use a templating system, where the HTML is kept in a separate file with special syntax to indicate where the data from the application appears. There are many templating systems for Python: EZT, Cheetah, ClearSilver, Quixote, Django, and Jinja2 are just a few. You can use your template engine of choice by bundling it with your application code.</em></li>
-
+	<li>Development with  the <a href="https://www.djangoproject.com/" target="_blank">Django</a> MVC framework.</li>
+	<li>
+	Using <a href="http://en.wikipedia.org/wiki/Object-relational_mapping" target="blank">ORM</a> to store users posts and comments. 
+	</li>
+	<li>Persistent user login and user registration.</li>
+	<li>Responsive, mobile friendly design with CSS.</li>
+	<li>Dynamic content (search, pagination and explicit content filtering) with <a href="http://en.wikipedia.org/wiki/Ajax_%28programming%29" target="_blank">AJAX</a>.</li>
+	<li>Version Control with <a href="http://git-scm.com/" target="_blank">Git</a>. This project can be viewed on my <a href="https://github.com/Radicis/asktag" target="_blank">Github</a> page</li>
+	<li>Deployment to <a href="https://www.heroku.com/" target="_blank">Heroku</a>. </li>
 </ul>
-
+</div>
 {% endblock %}

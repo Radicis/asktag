@@ -7,10 +7,10 @@ from captcha.fields import CaptchaField
 
 #inherits from UserCreationForm
 class MyRegistrationForm(UserCreationForm):		
-	captcha = CaptchaField()
+	captcha = CaptchaField(required=True)	
 	class Meta:
 		model = User
-		fields = ('username', 'password1', 'password2')
+		fields = ('username', 'password1', 'password2')		
 	
 	def save(self, commit=True):
 		user = super(MyRegistrationForm, self).save(commit=False)

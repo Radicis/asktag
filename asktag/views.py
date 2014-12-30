@@ -33,10 +33,13 @@ def register_user(request):
 			human = True
 			form.save()
 			return HttpResponseRedirect('/accounts/register_success')
+		else:
+			print form.errors
 			
 	args = {}
 	args.update(csrf(request))
-	
+	args['topPosts']= getTopPosts(5)
+	args['latestPosts']= getLatest(5)
 	args['form'] = MyRegistrationForm()
 	
 	return render(request, 'register.html', args)
