@@ -1,3 +1,4 @@
 # http://asktag.herokuapp.com
 
-Not full functional. 
+Moved from app engine to Django on heroku PAS 
+
